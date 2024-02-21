@@ -18,24 +18,24 @@ public class Metodo_Pago {
 
     @Id
     @GeneratedValue ( strategy = GenerationType.IDENTITY)
-    @Column ( unique = true , nullable = false)
     private Long ID;
 
-    @Column
+    @Column(nullable = false)
     private Boolean isCredDeb;
 
-    @Column
+    @Column (nullable = false)
     private Double monto;
 
-    @Column
+    @Column (nullable = false)
     private String tipo_Tarjeta;
 
-    @Column
+    @Column (nullable = false)
     private LocalDate fecha_Vencimiento;
 
-    @Column
+    @Column (nullable = false)
     private Integer CVE;
 
-    @Column
+    @Column (nullable = false)
     private Integer numero_Tarjeta;
+
 }

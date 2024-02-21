@@ -20,25 +20,24 @@ public class Reserva {
 
     @Id
     @GeneratedValue ( strategy = GenerationType.IDENTITY)
-    @Column ( unique = true , nullable = false)
     private Long ID;
 
-    @Column
+    @Column (nullable = false)
     private String ubicacion;
 
-    @Column
+    @Column (nullable = false)
     private LocalDate fecha_Inicio;
 
-    @Column
+    @Column (nullable = false)
     private LocalDate fecha_Entrega;
 
-    @Column
+    @Column (nullable = false)
     private Set<Vehiculo> vehiculos = new HashSet<Vehiculo>();
 
-    @Column
+    @Column (nullable = false)
     private Boolean isReserva;
 
-    @Column
+    @Column (nullable = false)
     private Metodo_Pago metodo_Pago;
 
 

@@ -18,43 +18,43 @@ public class Vehiculo {
 
     @Id
     @GeneratedValue ( strategy = GenerationType.IDENTITY)
-    @Column ( unique = true , nullable = false)
     private Long ID;
 
-    @Column
+    @Column (nullable = false, unique = true)
     private String matricula;
 
-    @Column
+    @Column (nullable = false)
     private String marca;
 
-    @Column
+    @Column (nullable = false)
     private String color;
 
-    @Column
+    @Column (nullable = false)
     private Boolean isDisponible;
 
-    @Column
+    @Column (nullable = false)
     private LocalDate fecha_Fabricacion;
 
-    @Column
+    @Column (nullable = false)
     private String tipo_Combustible;
 
-    @Column
+    // Ojo, revisar si será la categoría
+    @Column (nullable = false)
     private String gama_Vehiculo;
 
-    @Column
+    @Column (nullable = false)
     private Integer kilometraje;
 
-    @Column
+    @Column (nullable = false)
     private Integer cantidad_Puertas;
 
-    @Column
+    @Column (nullable = false)
     private String modelo_Auto;
 
-    @Column
+    @Column (nullable = false)
     private String transmision;
 
-    @Column
+    @Column (nullable = false)
     private Double precio;
 
     @Column

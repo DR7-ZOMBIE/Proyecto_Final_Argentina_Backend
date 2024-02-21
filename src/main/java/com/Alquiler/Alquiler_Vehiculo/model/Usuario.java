@@ -1,5 +1,6 @@
 package com.Alquiler.Alquiler_Vehiculo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,37 +18,37 @@ public class Usuario {
 
     @Id
     @GeneratedValue ( strategy = GenerationType.IDENTITY)
-    @Column ( unique = true , nullable = false)
     private Long ID;
 
-    @Column
+    @Column (nullable = false, unique = true)
     private String cedula;
 
-    @Column
+    @Column (nullable = false)
     private String nombre;
 
-    @Column
+    @Column (nullable = false)
     private String direccion;
 
-    @Column
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Reserva> reservas = new HashSet<Reserva>();
 
-    @Column
+    @Column (nullable = false)
     private Metodo_Pago metodo_Pago;
 
-    @Column
+    @Column (nullable = false)
     private Boolean isLicencia;
 
-    @Column
+    @Column (nullable = false)
     private String genero;
 
-    @Column
+    @Column(nullable = false)
     private String password;
 
-    @Column
+    @Column (nullable = false)
     private Integer edad;
 
-    @Column
+    @Column (nullable = false)
     private String email;
 
 

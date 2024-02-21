@@ -15,10 +15,14 @@ import java.util.Set;
 @Table(name = "empresa")
 public class Empresa {
 
+
+
+    //EMPRESA YA NO ES NECESARIO... ELIMINAR?
+
+
     // Columna de ID - LLave primaria
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
-    @Column( unique=true , nullable=false )
     private Long ID;
 
     @Column

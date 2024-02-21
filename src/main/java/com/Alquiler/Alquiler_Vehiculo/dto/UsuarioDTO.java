@@ -2,9 +2,15 @@ package com.Alquiler.Alquiler_Vehiculo.dto;
 
 import com.Alquiler.Alquiler_Vehiculo.model.Metodo_Pago;
 import com.Alquiler.Alquiler_Vehiculo.model.Reserva;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
+
+
+@Getter
+@Setter
 
 public class UsuarioDTO {
 
