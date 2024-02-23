@@ -1,7 +1,14 @@
 package com.Alquiler.Alquiler_Vehiculo.dto;
 
+import lombok.*;
+
 import java.time.LocalDate;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class Metodo_PagoDTO {
 
     private Long ID;
@@ -17,5 +24,6 @@ public class Metodo_PagoDTO {
     private Integer CVE;
 
     private Integer numero_Tarjeta;
+
 
 }

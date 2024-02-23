@@ -1,7 +1,14 @@
 package com.Alquiler.Alquiler_Vehiculo.dto;
 
+import lombok.*;
+
 import java.time.LocalDate;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class VehiculoDTO {
 
     private Long ID;
@@ -31,6 +38,5 @@ public class VehiculoDTO {
     private Double precio;
 
     private String descripcion;
-
 
 }

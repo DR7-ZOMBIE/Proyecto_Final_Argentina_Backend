@@ -1,5 +1,6 @@
 package com.Alquiler.Alquiler_Vehiculo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.yaml.snakeyaml.events.Event;
@@ -38,4 +39,17 @@ public class Metodo_Pago {
 
     @Column
     private Integer numero_Tarjeta;
+
+    // Un metodo de pago tiene una reserva
+    @JsonIgnore
+    @OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn( name = "metodo_Pago_id", nullable = false)
+    private Reserva reserva;
+
+    // Un metodo de pago tiene un usuario
+    @JsonIgnore
+    @OneToOne (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn( name = "usuario_id", nullable = false)
+    private Usuario usuario;
+
 }

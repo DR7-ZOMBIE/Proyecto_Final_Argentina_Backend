@@ -1,8 +1,10 @@
 package com.Alquiler.Alquiler_Vehiculo.services;
 
 import com.Alquiler.Alquiler_Vehiculo.dto.EmpresaDTO;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
+
 
 public interface IEmpresaServices<T> {
 

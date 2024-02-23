@@ -2,11 +2,17 @@ package com.Alquiler.Alquiler_Vehiculo.dto;
 
 import com.Alquiler.Alquiler_Vehiculo.model.Metodo_Pago;
 import com.Alquiler.Alquiler_Vehiculo.model.Vehiculo;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class ReservaDTO {
 
     private Long ID;

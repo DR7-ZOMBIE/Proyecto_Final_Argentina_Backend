@@ -5,12 +5,14 @@ import com.Alquiler.Alquiler_Vehiculo.model.Empresa;
 import com.Alquiler.Alquiler_Vehiculo.register.IDAOEmpresa;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+@Service
 public class EmpresaServices implements IEmpresaServices<EmpresaDTO> {
 
     // Vamos a colocar una capa de persistencia de seguridad para acceder a los

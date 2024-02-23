@@ -30,7 +30,13 @@ public class Empresa {
     @Column
     private String direccion;
 
-    @Column
+    // Lazy es carga lente primero verificar la relacion y de ahi si los carga
+    // Eager carga de inmediato pero carga datos innecesarios
+    // Como la relacion esta en empresa que una empresa tiene muchos vehiculos debemos proceder a instanciar
+    // Una emprresa en vehiculos para que tenga sentido la relacion
+    // Una empresa tiene muchos vehiculos
+
+    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Vehiculo> vehiculos = new HashSet<Vehiculo>();
 
 }
