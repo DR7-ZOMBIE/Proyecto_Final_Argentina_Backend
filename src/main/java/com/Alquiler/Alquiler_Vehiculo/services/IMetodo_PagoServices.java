@@ -17,4 +17,5 @@ public interface IMetodo_PagoServices<T> {
 
     void deleteAll(); // Eliminar los pagos
 
+    void deleteById(Long id);
 }

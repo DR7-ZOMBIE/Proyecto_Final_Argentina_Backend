@@ -52,4 +52,9 @@ public class Metodo_PagoServices implements IMetodo_PagoServices<Metodo_PagoDTO>
     @Override
     public void deleteAll() { idaoMetodo_pago.deleteAll(); }
 
+    @Override
+    public void deleteById(Long id) {
+
+    }
+
 }
