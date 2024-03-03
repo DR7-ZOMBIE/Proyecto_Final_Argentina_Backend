@@ -1,4 +1,4 @@
-package com.Alquiler.Alquiler_Vehiculo.config;
+/*package com.Alquiler.Alquiler_Vehiculo.config;
 
 import javax.sql.DataSource;
 
@@ -18,3 +18,4 @@ public class DatabaseConfig {
         return dataSourceProperties.initializeDataSourceBuilder().build();
     }
 }
+*/

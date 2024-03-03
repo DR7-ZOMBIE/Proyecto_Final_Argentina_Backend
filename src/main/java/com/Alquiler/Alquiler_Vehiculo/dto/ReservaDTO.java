@@ -20,7 +20,7 @@ public class ReservaDTO {
 
     private LocalDate fecha_Inicio;
 
-    private LocalDate decha_Entrega;
+    private LocalDate fecha_Entrega;
 
     private Set<Vehiculo> vehiculos = new HashSet<Vehiculo>();
 
