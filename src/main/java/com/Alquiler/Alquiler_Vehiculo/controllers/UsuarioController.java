@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.sql.DataSource;
 import java.util.Set;
 
 @RestController
@@ -14,6 +15,7 @@ import java.util.Set;
 public class UsuarioController {
 
     @Autowired
+    private DataSource dataSource;
     private IUsuarioServices<UsuarioDTO> usuarioServices;
 
     @PostMapping
