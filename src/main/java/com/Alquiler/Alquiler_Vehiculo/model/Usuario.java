@@ -29,13 +29,6 @@ public class Usuario {
     @Column
     private String direccion;
 
-    @OneToMany( mappedBy = "usuario" , cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Reserva> reservas = new HashSet<Reserva>();
-
-    // Un usuario tiene un metodo de pago recordemos que el mapped by debe contener el atributo de la otra clase
-    @OneToOne(mappedBy = "usuario" , cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Metodo_Pago metodo_Pago;
-
     @Column
     private Boolean isLicencia;
 
@@ -50,6 +43,9 @@ public class Usuario {
 
     @Column
     private String email;
+
+    @OneToMany( mappedBy = "usuario" , cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Reserva> reservas = new HashSet<Reserva>();
 
 
 }

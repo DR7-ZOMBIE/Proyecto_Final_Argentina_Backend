@@ -44,8 +44,10 @@ public class Reserva {
     @OneToOne(mappedBy = "reserva", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Metodo_Pago metodo_Pago;
 
+    // Muchas reservas tienen un usuario
     @JsonIgnore
     @JoinColumn( name = "usuario_id" , nullable = false)
     @ManyToOne ( fetch = FetchType.LAZY , cascade = CascadeType.ALL)
     private Usuario usuario;
+
 }

@@ -46,10 +46,4 @@ public class Metodo_Pago {
     @JoinColumn( name = "metodo_Pago_id", nullable = false)
     private Reserva reserva;
 
-    // Un metodo de pago tiene un usuario
-    @JsonIgnore
-    @OneToOne (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn( name = "usuario_id", nullable = false)
-    private Usuario usuario;
-
 }

@@ -42,7 +42,7 @@ public class VehiculoServices implements IVehiculoServices<VehiculoDTO>{
     }
 
     @Override
-    public Set<VehiculoDTO> findAllTSet() {
+    public Set<VehiculoDTO> findAll() {
         List<Vehiculo> vehiculos = idaoVehiculo.findAll();
         Set<VehiculoDTO> vehiculoDTOS = new HashSet<>();
 

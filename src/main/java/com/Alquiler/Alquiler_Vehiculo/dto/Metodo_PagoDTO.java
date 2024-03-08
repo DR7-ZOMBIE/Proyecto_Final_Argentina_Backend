@@ -25,5 +25,4 @@ public class Metodo_PagoDTO {
 
     private Integer numero_Tarjeta;
 
-
 }

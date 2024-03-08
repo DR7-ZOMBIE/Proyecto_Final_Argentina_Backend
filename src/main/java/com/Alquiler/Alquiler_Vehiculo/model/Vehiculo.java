@@ -62,13 +62,6 @@ public class Vehiculo {
     private String descripcion;
 
     // JoinColumn es una relacion unidireccional mappedBy es Bidireccional
-    // Muchos vehiculos tienen una empresa
-    @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL , fetch = FetchType.LAZY)
-    @JoinColumn( name = "empresa_id", nullable = false )
-    private Empresa empresa;
-
-    // JoinColumn es una relacion unidireccional mappedBy es Bidireccional
     // Muchos vehiculos tienen una reserva
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL , fetch = FetchType.LAZY)
