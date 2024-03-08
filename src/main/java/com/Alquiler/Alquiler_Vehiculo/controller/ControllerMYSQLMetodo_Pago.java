@@ -14,6 +14,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/pago")
+@CrossOrigin (origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class ControllerMYSQLMetodo_Pago {
 
     @Autowired

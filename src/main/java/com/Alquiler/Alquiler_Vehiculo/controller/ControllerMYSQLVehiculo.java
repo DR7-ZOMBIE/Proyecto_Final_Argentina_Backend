@@ -13,6 +13,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping ("/vehiculo")
+@CrossOrigin (origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class ControllerMYSQLVehiculo {
     @Autowired
     private IVehiculoServices<VehiculoDTO> vehiculoServices; // Accediendo al servicio

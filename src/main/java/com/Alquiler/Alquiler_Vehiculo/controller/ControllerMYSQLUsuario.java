@@ -20,6 +20,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin (origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class ControllerMYSQLUsuario {
 
     // Llamar el servicio con los metodos necesarios
