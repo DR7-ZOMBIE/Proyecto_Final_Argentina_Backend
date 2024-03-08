@@ -4,8 +4,10 @@ import com.Alquiler.Alquiler_Vehiculo.dto.Metodo_PagoDTO;
 import com.Alquiler.Alquiler_Vehiculo.model.Metodo_Pago;
 import com.Alquiler.Alquiler_Vehiculo.register.IDAOMetodo_Pago;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.HashSet;
 import java.util.List;
@@ -21,11 +23,14 @@ public class Metodo_PagoServices implements IMetodo_PagoServices<Metodo_PagoDTO>
     @Autowired
     private ObjectMapper mapper;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     @Override
     public Metodo_PagoDTO save(Metodo_PagoDTO metodoPagoDTO) {
-        Metodo_Pago metodo_pago = mapper.convertValue(metodoPagoDTO, Metodo_Pago.class);
-        idaoMetodo_pago.save(metodo_pago);
-        return metodoPagoDTO;
+        Metodo_Pago metodo_pago = modelMapper.map(metodoPagoDTO, Metodo_Pago.class);
+        Metodo_Pago m = idaoMetodo_pago.save(metodo_pago);
+        return modelMapper.map(m, Metodo_PagoDTO.class);
     }
 
     @Override

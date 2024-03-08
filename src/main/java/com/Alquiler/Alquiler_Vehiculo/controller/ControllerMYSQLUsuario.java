@@ -1,8 +1,10 @@
 package com.Alquiler.Alquiler_Vehiculo.controller;
 
 import com.Alquiler.Alquiler_Vehiculo.Excepciones;
+import com.Alquiler.Alquiler_Vehiculo.dto.Metodo_PagoDTO;
 import com.Alquiler.Alquiler_Vehiculo.dto.UsuarioDTO;
 import com.Alquiler.Alquiler_Vehiculo.model.Usuario;
+import com.Alquiler.Alquiler_Vehiculo.services.IMetodo_PagoServices;
 import com.Alquiler.Alquiler_Vehiculo.services.IUsuarioServices;
 import lombok.Getter;
 import org.modelmapper.ModelMapper;
@@ -17,13 +19,15 @@ import java.util.Optional;
 import java.util.Set;
 
 @RestController
-@CrossOrigin("*")
 @RequestMapping("/user")
 public class ControllerMYSQLUsuario {
 
     // Llamar el servicio con los metodos necesarios
     @Autowired
     private IUsuarioServices<UsuarioDTO> usuarioServices;
+
+    @Autowired
+    private IMetodo_PagoServices<Metodo_PagoDTO> metodoPagoServices;
 
     // Transformar un usuario DTO a un usuario normal
     @Autowired
@@ -73,11 +77,13 @@ public class ControllerMYSQLUsuario {
     }
 
     // Agregar un Usuario
-
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/add")
     public ResponseEntity<UsuarioDTO> addUser(@RequestBody UsuarioDTO usuario){
-        return ResponseEntity.ok(usuarioServices.save(usuario));
+        // Guardar el usuario
+        UsuarioDTO usuarioGuardado = usuarioServices.save(usuario);
+        return ResponseEntity.ok(usuarioGuardado);
+
     }
 
     // Modificar un Usuario

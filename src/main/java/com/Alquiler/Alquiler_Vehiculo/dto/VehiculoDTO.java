@@ -1,8 +1,11 @@
 package com.Alquiler.Alquiler_Vehiculo.dto;
 
+import com.Alquiler.Alquiler_Vehiculo.model.Reserva;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -23,7 +26,7 @@ public class VehiculoDTO {
 
     private LocalDate fecha_Fabricacion;
 
-    private String tipo_Combestible;
+    private String tipo_Combustible;
 
     private String gama_Vehiculo;
 
@@ -38,5 +41,7 @@ public class VehiculoDTO {
     private Double precio;
 
     private String descripcion;
+
+    private Set<Reserva> reservas = new HashSet<>();
 
 }

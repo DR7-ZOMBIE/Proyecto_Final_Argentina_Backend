@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 import java.util.Set;
 
-@CrossOrigin("*")
 @RestController
 @RequestMapping ("/vehiculo")
 public class ControllerMYSQLVehiculo {
@@ -53,9 +52,9 @@ public class ControllerMYSQLVehiculo {
     // Agregar vehiculo al sistema
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<VehiculoDTO> saveVehiculo(@RequestBody VehiculoDTO vehiculoDTO){
-
-        return ResponseEntity.ok(vehiculoDTO);
+    public ResponseEntity<VehiculoDTO> addVehiculo(@RequestBody VehiculoDTO vehiculoDTO){
+        vehiculoServices.save(vehiculoDTO);
+        return ResponseEntity.ok(vehiculoServices.save(vehiculoDTO));
 
     }
 

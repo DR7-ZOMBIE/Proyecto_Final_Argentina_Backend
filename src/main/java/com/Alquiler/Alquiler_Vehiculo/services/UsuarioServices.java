@@ -6,8 +6,10 @@ import com.Alquiler.Alquiler_Vehiculo.model.Usuario;
 import com.Alquiler.Alquiler_Vehiculo.model.Vehiculo;
 import com.Alquiler.Alquiler_Vehiculo.register.IDAOUsuario;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import java.util.HashSet;
 import java.util.List;
@@ -23,12 +25,16 @@ public class UsuarioServices implements IUsuarioServices<UsuarioDTO>{
     @Autowired
     private ObjectMapper mapper;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
 
     @Override
     public UsuarioDTO save(UsuarioDTO usuarioDTO) {
-        Usuario usuario = mapper.convertValue(usuarioDTO, Usuario.class);
-        idaoUsuario.save(usuario);
-        return usuarioDTO;
+
+        Usuario usuario = modelMapper.map(usuarioDTO, Usuario.class);
+        Usuario usuarioSave = idaoUsuario.save(usuario);
+        return modelMapper.map(usuarioSave, UsuarioDTO.class);
     }
 
     @Override

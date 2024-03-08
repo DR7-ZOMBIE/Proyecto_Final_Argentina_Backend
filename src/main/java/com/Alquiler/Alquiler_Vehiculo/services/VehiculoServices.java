@@ -4,6 +4,7 @@ import com.Alquiler.Alquiler_Vehiculo.dto.VehiculoDTO;
 import com.Alquiler.Alquiler_Vehiculo.model.Vehiculo;
 import com.Alquiler.Alquiler_Vehiculo.register.IDAOVehiculo;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,13 +20,19 @@ public class VehiculoServices implements IVehiculoServices<VehiculoDTO>{
     private IDAOVehiculo idaoVehiculo;
 
     @Autowired
+    private ModelMapper modelMapper;
+    @Autowired
     private ObjectMapper mapper;
 
     @Override
     public VehiculoDTO save(VehiculoDTO vehiculoDTO) {
-        Vehiculo vehiculo =  mapper.convertValue(vehiculoDTO , Vehiculo.class);
-        idaoVehiculo.save(vehiculo);
-        return vehiculoDTO;
+
+        Vehiculo vehiculo =  modelMapper.map(vehiculoDTO, Vehiculo.class);
+
+        Vehiculo savedVehiculo = idaoVehiculo.save(vehiculo);
+
+        return modelMapper.map(savedVehiculo, VehiculoDTO.class);
+
     }
 
     @Override
@@ -36,7 +43,7 @@ public class VehiculoServices implements IVehiculoServices<VehiculoDTO>{
         Optional<Vehiculo> vehicle = idaoVehiculo.findById(id);
         VehiculoDTO vehiculoDTO = null;
 
-        if (vehicle.isPresent()) vehiculoDTO = mapper.convertValue(vehicle, VehiculoDTO.class);
+        if (vehicle.isPresent()) vehiculoDTO = modelMapper.map(vehicle, VehiculoDTO.class);
 
         return vehiculoDTO;
     }
@@ -46,7 +53,7 @@ public class VehiculoServices implements IVehiculoServices<VehiculoDTO>{
         List<Vehiculo> vehiculos = idaoVehiculo.findAll();
         Set<VehiculoDTO> vehiculoDTOS = new HashSet<>();
 
-        for (Vehiculo i: vehiculos) vehiculoDTOS.add(mapper.convertValue(i, VehiculoDTO.class));
+        for (Vehiculo i: vehiculos) vehiculoDTOS.add(modelMapper.map(i, VehiculoDTO.class));
 
         return vehiculoDTOS;
     }

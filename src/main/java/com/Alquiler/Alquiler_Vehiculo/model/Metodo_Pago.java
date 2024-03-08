@@ -7,6 +7,8 @@ import org.yaml.snakeyaml.events.Event;
 
 import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -22,28 +24,27 @@ public class Metodo_Pago {
     @Column ( unique = true , nullable = false)
     private Long ID;
 
-    @Column
+    @Column(nullable = false)
     private Boolean isCredDeb;
 
-    @Column
+    @Column(nullable = false)
     private Double monto;
 
-    @Column
+    @Column(nullable = false)
     private String tipo_Tarjeta;
 
-    @Column
+    @Column(nullable = false)
     private LocalDate fecha_Vencimiento;
 
-    @Column
-    private Integer CVE;
+    @Column(nullable = false)
+    private Integer cve;
 
-    @Column
+    @Column(nullable = false)
     private Integer numero_Tarjeta;
 
     // Un metodo de pago tiene una reserva
+    @OneToOne(mappedBy = "metodoPago", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
-    @OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn( name = "metodo_Pago_id", nullable = false)
-    private Reserva reserva;
+    private Usuario Usuario;
 
 }

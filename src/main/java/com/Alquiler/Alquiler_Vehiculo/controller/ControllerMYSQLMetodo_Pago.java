@@ -13,7 +13,6 @@ import java.util.Optional;
 import java.util.Set;
 
 @RestController
-@CrossOrigin("*")
 @RequestMapping("/pago")
 public class ControllerMYSQLMetodo_Pago {
 
@@ -51,8 +50,9 @@ public class ControllerMYSQLMetodo_Pago {
     }
 
     // Guardar un metodo de pago
+    @ResponseStatus(HttpStatus.OK)
     @PostMapping("/add")
-    public ResponseEntity<Metodo_PagoDTO> savePago(@RequestBody Metodo_PagoDTO metodoPagoDTO){
+    public ResponseEntity<Metodo_PagoDTO> addPago(@RequestBody Metodo_PagoDTO metodoPagoDTO){
         return ResponseEntity.ok(servicePago.save(metodoPagoDTO));
     }
 
@@ -80,7 +80,6 @@ public class ControllerMYSQLMetodo_Pago {
 
         if (m.isPresent()){
             o.setMonto(metodoPagoDTO.getMonto());
-            o.setCVE(metodoPagoDTO.getCVE());
         }else{
             throw new Excepciones("El metodo de pago no existe no se puede actualizar", HttpStatus.NOT_FOUND);
         }

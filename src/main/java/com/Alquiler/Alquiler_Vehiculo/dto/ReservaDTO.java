@@ -1,6 +1,7 @@
 package com.Alquiler.Alquiler_Vehiculo.dto;
 
 import com.Alquiler.Alquiler_Vehiculo.model.Metodo_Pago;
+import com.Alquiler.Alquiler_Vehiculo.model.Usuario;
 import com.Alquiler.Alquiler_Vehiculo.model.Vehiculo;
 import lombok.*;
 
@@ -21,12 +22,12 @@ public class ReservaDTO {
 
     private LocalDate fecha_Inicio;
 
-    private LocalDate decha_Entrega;
-
-    private Set<Vehiculo> vehiculos = new HashSet<Vehiculo>();
+    private LocalDate fecha_Entrega;
 
     private Boolean isReserva;
 
-    private Metodo_Pago metodo_Pago;
+    private Set<Vehiculo> vehiculos = new HashSet<Vehiculo>();
+
+    private Usuario usuario;
 
 }

@@ -15,7 +15,6 @@ import java.util.Optional;
 import java.util.Set;
 
 @RestController
-@CrossOrigin("*")
 @RequestMapping("/reserva")
 public class ControllerMYSQLReserva {
 
@@ -70,6 +69,7 @@ public class ControllerMYSQLReserva {
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/add")
     public ResponseEntity<ReservaDTO> addReserva(@RequestBody ReservaDTO reservaDTO){
+        reservaServices.save(reservaDTO);
         return ResponseEntity.ok(reservaServices.save(reservaDTO));
     }
 

@@ -22,10 +22,6 @@ public class UsuarioDTO {
 
     private String direccion;
 
-    private Set<Reserva> reservas = new HashSet<Reserva>();
-
-    private Metodo_Pago metodo_pago;
-
     private Boolean isLicencia;
 
     private String genero;
@@ -33,6 +29,12 @@ public class UsuarioDTO {
     private Integer edad;
 
     private String email;
+
+    private String password;
+
+    private Metodo_Pago metodo_pago;
+
+    private Set<Reserva> reservas = new HashSet<Reserva>();
 
 
 

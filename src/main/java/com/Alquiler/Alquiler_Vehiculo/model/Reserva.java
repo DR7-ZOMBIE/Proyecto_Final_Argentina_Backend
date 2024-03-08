@@ -24,30 +24,31 @@ public class Reserva {
     @Column ( unique = true , nullable = false)
     private Long ID;
 
-    @Column
+    @Column(nullable = false)
     private String ubicacion;
 
-    @Column
+    @Column(nullable = false)
     private LocalDate fecha_Inicio;
 
-    @Column
+    @Column(nullable = false)
     private LocalDate fecha_Entrega;
 
-    // Una reserva tiene muchos vehiculos
-    @OneToMany(mappedBy = "reserva" , cascade = CascadeType.ALL , fetch = FetchType.LAZY)
-    private Set<Vehiculo> vehiculos = new HashSet<Vehiculo>();
-
-    @Column
+    @Column(nullable = false)
     private Boolean isReserva;
-
-    // Una reserva tiene un metodo de pago
-    @OneToOne(mappedBy = "reserva", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Metodo_Pago metodo_Pago;
 
     // Muchas reservas tienen un usuario
     @JsonIgnore
     @JoinColumn( name = "usuario_id" , nullable = false)
     @ManyToOne ( fetch = FetchType.LAZY , cascade = CascadeType.ALL)
     private Usuario usuario;
+
+    // Muchos vehiculos tienen una reserva
+    @ManyToMany
+    @JoinTable(
+            name = "reserva_vehiculo",
+            joinColumns = @JoinColumn(name = "reserva_id"),
+            inverseJoinColumns = @JoinColumn(name = "vehiculo_id")
+    )
+    private Set<Vehiculo> vehiculos = new HashSet<>();
 
 }
