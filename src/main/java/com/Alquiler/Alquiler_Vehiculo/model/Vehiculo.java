@@ -1,8 +1,11 @@
 package com.Alquiler.Alquiler_Vehiculo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @ToString
@@ -17,47 +20,50 @@ public class Vehiculo {
     // Columna llave primaria
 
     @Id
-    @GeneratedValue ( strategy = GenerationType.IDENTITY)
-    @Column ( unique = true , nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true, nullable = false)
     private Long ID;
 
-    @Column
+    @Column(nullable = false)
     private String matricula;
 
-    @Column
+    @Column(nullable = false)
     private String marca;
 
-    @Column
+    @Column(nullable = false)
     private String color;
 
-    @Column
+    @Column(nullable = false)
     private Boolean isDisponible;
 
-    @Column
+    @Column(nullable = false)
     private LocalDate fecha_Fabricacion;
 
-    @Column
+    @Column(nullable = false)
     private String tipo_Combustible;
 
-    @Column
+    @Column(nullable = false)
     private String gama_Vehiculo;
 
-    @Column
+    @Column(nullable = false)
     private Integer kilometraje;
 
-    @Column
+    @Column(nullable = false)
     private Integer cantidad_Puertas;
 
-    @Column
+    @Column(nullable = false)
     private String modelo_Auto;
 
-    @Column
+    @Column(nullable = false)
     private String transmision;
 
-    @Column
+    @Column(nullable = false)
     private Double precio;
 
-    @Column
+    @Column(nullable = false)
     private String descripcion;
+
+    @ManyToMany(mappedBy = "vehiculos", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    private Set<Reserva> reservas = new HashSet<>();
 
 }

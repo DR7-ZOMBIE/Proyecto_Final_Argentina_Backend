@@ -4,13 +4,16 @@ import com.Alquiler.Alquiler_Vehiculo.dto.ReservaDTO;
 import com.Alquiler.Alquiler_Vehiculo.model.Reserva;
 import com.Alquiler.Alquiler_Vehiculo.register.IDAOReserva;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+@Service
 public class ReservaServices implements IReservaServices<ReservaDTO>{
 
     @Autowired
@@ -19,11 +22,14 @@ public class ReservaServices implements IReservaServices<ReservaDTO>{
     @Autowired
     private ObjectMapper mapper;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     @Override
     public ReservaDTO save(ReservaDTO reservaDTO) {
-        Reserva reserva = mapper.convertValue(reservaDTO, Reserva.class);
-        idaoReserva.save(reserva);
-        return reservaDTO;
+        Reserva reserva = modelMapper.map(reservaDTO, Reserva.class);
+        Reserva r = idaoReserva.save(reserva);
+        return modelMapper.map(r, ReservaDTO.class);
     }
 
     @Override

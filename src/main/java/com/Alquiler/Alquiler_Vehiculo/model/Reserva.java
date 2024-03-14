@@ -1,5 +1,6 @@
 package com.Alquiler.Alquiler_Vehiculo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,23 +24,34 @@ public class Reserva {
     @Column ( unique = true , nullable = false)
     private Long ID;
 
-    @Column
+    @Column(nullable = false)
     private String ubicacion;
 
-    @Column
+    @Column(nullable = false)
     private LocalDate fecha_Inicio;
 
-    @Column
+    @Column(nullable = false)
     private LocalDate fecha_Entrega;
 
-    @Column
-    private Set<Vehiculo> vehiculos = new HashSet<Vehiculo>();
-
-    @Column
+    @Column(nullable = false)
     private Boolean isReserva;
 
-    @Column
-    private Metodo_Pago metodo_Pago;
+    @Column(nullable = false)
+    private Boolean isDebit; // true debito - false credito
 
+    // Muchas reservas tienen un usuario
+    @JsonIgnore
+    @JoinColumn( name = "usuario_id" , nullable = false)
+    @ManyToOne ( fetch = FetchType.LAZY , cascade = CascadeType.ALL)
+    private Usuario usuario;
+
+    // Muchos vehiculos tienen una reserva
+    @ManyToMany
+    @JoinTable(
+            name = "reserva_vehiculo",
+            joinColumns = @JoinColumn(name = "reserva_id"),
+            inverseJoinColumns = @JoinColumn(name = "vehiculo_id")
+    )
+    private Set<Vehiculo> vehiculos = new HashSet<>();
 
 }
