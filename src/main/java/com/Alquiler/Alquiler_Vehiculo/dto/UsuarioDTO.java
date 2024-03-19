@@ -1,6 +1,7 @@
 package com.Alquiler.Alquiler_Vehiculo.dto;
 
 import com.Alquiler.Alquiler_Vehiculo.model.Reserva;
+import com.Alquiler.Alquiler_Vehiculo.model.UserRol;
 import lombok.*;
 
 import java.util.HashSet;
@@ -15,9 +16,18 @@ public class UsuarioDTO {
 
     private Long ID;
 
-    private String cedula;
-
     private String nombre;
+
+    private String apellido;
+
+    private String email;
+
+    private String password;
+
+    private UserRol userRol;
+
+    /*
+    private String cedula;
 
     private String direccion;
 
@@ -26,10 +36,7 @@ public class UsuarioDTO {
     private String genero;
 
     private Integer edad;
-
-    private String email;
-
-    private String password;
+    */
 
     private Set<Reserva> reservas = new HashSet<Reserva>();
 

@@ -30,6 +30,7 @@ public class ControllerMYSQLUsuario {
     @GetMapping("/list")
     private Set<UsuarioDTO> listAll(){
 
+
        Optional<Set<UsuarioDTO>> usuarios = Optional.ofNullable(usuarioServices.findAll());
 
        if (usuarios.isPresent()){
@@ -87,7 +88,7 @@ public class ControllerMYSQLUsuario {
         UsuarioDTO o = null;
 
         if (u.isPresent()){
-            o.setCedula(usuario.getCedula());
+            //o.setCedula(usuario.getCedula());
             o.setNombre(usuario.getNombre());
         }else{
             throw new Excepciones("No hay usuario para actualizar", HttpStatus.NOT_FOUND);
