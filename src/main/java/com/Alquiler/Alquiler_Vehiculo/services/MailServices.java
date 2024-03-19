@@ -19,16 +19,12 @@ public class MailServices {
     private String fromMail;
 
     public void sendMail(String mail, MailEstructura mailEstructura) throws MessagingException {
-        try {
-            SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
-            simpleMailMessage.setFrom(fromMail);
-            simpleMailMessage.setSubject(mailEstructura.getAsunto());
-            simpleMailMessage.setText(mailEstructura.getMensaje());
-            simpleMailMessage.setTo(mail);
+        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+        simpleMailMessage.setFrom(fromMail);
+        simpleMailMessage.setSubject(mailEstructura.getAsunto());
+        simpleMailMessage.setText(mailEstructura.getMensaje());
+        simpleMailMessage.setTo(mail);
 
-            mailSender.send(simpleMailMessage);
-        } catch (MailException e) {
-            throw new MessagingException("Error al enviar el correo electrónico.", e);
-        }
+        mailSender.send(simpleMailMessage);
     }
 }
