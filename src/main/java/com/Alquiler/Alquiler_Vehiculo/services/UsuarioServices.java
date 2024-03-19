@@ -17,9 +17,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
-@Controller
+@Service
 public class UsuarioServices implements IUsuarioServices<UsuarioDTO>{
-
 
 
     @Autowired
