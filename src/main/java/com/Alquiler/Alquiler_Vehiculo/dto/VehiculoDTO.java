@@ -15,33 +15,17 @@ import java.util.Set;
 public class VehiculoDTO {
 
     private Long ID;
-
-    private String matricula;
-
     private String marca;
-
-    private String color;
-
-    private Boolean isDisponible;
-
-    private LocalDate fecha_Fabricacion;
-
-    private String tipo_Combustible;
-
-    private String gama_Vehiculo;
-
-    private Integer kilometraje;
-
-    private Integer cantidad_Puertas;
-
     private String modelo_Auto;
-
-    private String transmision;
-
-    private Double precio;
-
+    private Integer categoriaId;
+    private String serialChasis;
+    private String serialMotor;
+    private String color;
+    private LocalDate anio;
+    private String matricula;
+    private Boolean isDisponible;
+    private String observacion;
     private String descripcion;
-
     private Set<Reserva> reservas = new HashSet<>();
 
     public void setId(long l) {

@@ -36,14 +36,16 @@ public class Reserva {
     @Column(nullable = false)
     private Boolean isReserva;
 
-    @Column(nullable = false)
-    private Boolean isDebit; // true debito - false credito
 
     // Muchas reservas tienen un usuario
     @JsonIgnore
     @JoinColumn( name = "usuario_id" , nullable = false)
     @ManyToOne ( fetch = FetchType.LAZY , cascade = CascadeType.ALL)
     private Usuario usuario;
+    // Un usuario tiene Un metodo de pago favorito
+    @OneToOne(cascade= CascadeType.ALL )
+    @JoinColumn(name= "pago_id", referencedColumnName = "id")
+    private MetodoPago metodoDePago;
 
     // Muchos vehiculos tienen una reserva
     @ManyToMany
@@ -53,5 +55,7 @@ public class Reserva {
             inverseJoinColumns = @JoinColumn(name = "vehiculo_id")
     )
     private Set<Vehiculo> vehiculos = new HashSet<>();
+
+
 
 }

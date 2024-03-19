@@ -30,8 +30,6 @@ public class ReservaDTO {
 
     private Usuario usuario;
 
-    private Boolean isDebit; // true debito - false credito
-
     public void setId(Long id) {
     }
 }
