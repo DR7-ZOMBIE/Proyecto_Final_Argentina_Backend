@@ -29,21 +29,22 @@ public class SecurityConfig {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    /*
+
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
-        auth.setUserDetailsService((UserDetailsService) usuarioServices);
+        auth.setUserDetailsService(usuarioServices);
         auth.setPasswordEncoder(bCryptPasswordEncoder);
         return auth;
     }
-    */
+
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http
+        http
                 .authorizeHttpRequests(request -> request
                         .requestMatchers(
+                                "/login",
                                 "/registro**",
                                 "/js/**",
                                 "/css/**",
@@ -56,9 +57,10 @@ public class SecurityConfig {
                         .invalidateHttpSession(true)
                         .clearAuthentication(true)
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                        .logoutSuccessUrl("/login?logout"))
-                .build();
-        }
+                        .logoutSuccessUrl("/login?logout"));
+        return http.build();
+    }
+
 
 
     @Bean

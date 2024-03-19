@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class UsuarioServices implements IUsuarioServices<UsuarioDTO>{
+public class UsuarioServices implements IUsuarioServices{
 
 
     @Autowired
@@ -39,6 +39,7 @@ public class UsuarioServices implements IUsuarioServices<UsuarioDTO>{
     }
 
 
+    /*
     @Override
     public UsuarioDTO save(UsuarioDTO usuarioDTO) {
 
@@ -46,7 +47,7 @@ public class UsuarioServices implements IUsuarioServices<UsuarioDTO>{
         Usuario usuarioSave = idaoUsuario.save(usuario);
         return modelMapper.map(usuarioSave, UsuarioDTO.class);
     }
-
+    */
 
     @Override
     public Usuario guardar(UsuarioDTO registroDTO) {
@@ -73,6 +74,7 @@ public class UsuarioServices implements IUsuarioServices<UsuarioDTO>{
     @Override
     public void deleteById(Long id) { idaoUsuario.deleteById(id); }
 
+    /*
     @Override
     public UsuarioDTO findById(Long id) {
         Optional<Usuario> usuario = idaoUsuario.findById(id);
@@ -82,7 +84,8 @@ public class UsuarioServices implements IUsuarioServices<UsuarioDTO>{
 
         return usuarioDTO;
     }
-
+     */
+    /*
     @Override
     public Set<UsuarioDTO> findAll() {
         List<Usuario> usuarios = idaoUsuario.findAll();
@@ -92,6 +95,7 @@ public class UsuarioServices implements IUsuarioServices<UsuarioDTO>{
 
         return usuariosDTO;
     }
+    */
 
     @Override
     public void deleteAll() { idaoUsuario.deleteAll(); }

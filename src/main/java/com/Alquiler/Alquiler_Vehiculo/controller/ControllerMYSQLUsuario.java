@@ -26,6 +26,8 @@ public class ControllerMYSQLUsuario {
     private ModelMapper mapper;
 
     // Listar todos los usuario
+
+    /*
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/list")
     private Set<UsuarioDTO> listAll(){
@@ -39,7 +41,9 @@ public class ControllerMYSQLUsuario {
            throw new Excepciones(" No hay usuariros en el sistema", HttpStatus.NOT_FOUND);
        }
     }
+    */
 
+    /*
     // Buscar un usuario
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/list/{id}")
@@ -53,7 +57,10 @@ public class ControllerMYSQLUsuario {
             throw new Excepciones("El usuario buscado no existe", HttpStatus.NOT_FOUND);
         }
     }
+    */
 
+
+    /*
     // Eliminar un usuario
 
     @ResponseStatus(HttpStatus.OK)
@@ -68,7 +75,8 @@ public class ControllerMYSQLUsuario {
             throw new Excepciones("El usuario no existe", HttpStatus.NOT_FOUND);
         }
     }
-
+     */
+    /*
     // Agregar un Usuario
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/add")
@@ -78,6 +86,7 @@ public class ControllerMYSQLUsuario {
         return ResponseEntity.ok(usuarioGuardado);
 
     }
+    */
 
     // Modificar un Usuario
     @ResponseStatus(HttpStatus.OK)

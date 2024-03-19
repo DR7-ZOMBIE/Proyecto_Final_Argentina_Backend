@@ -3,6 +3,8 @@ package com.Alquiler.Alquiler_Vehiculo.controller;
 
 import com.Alquiler.Alquiler_Vehiculo.dto.UsuarioDTO;
 import com.Alquiler.Alquiler_Vehiculo.services.IUsuarioServices;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -30,8 +32,14 @@ public class ControllerMYSQLRegistroUserCont {
         return "registro";
     }
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
     @PostMapping
     public String registrarCuentaDeUsuario(@ModelAttribute("usuario") UsuarioDTO registroDTO) {
+        String password = registroDTO.getPassword();
+        String encodedPassword = passwordEncoder.encode(password);
+        registroDTO.setPassword(encodedPassword);
         usuarioServicio.guardar(registroDTO);
         return "redirect:/registro?exito";
     }
