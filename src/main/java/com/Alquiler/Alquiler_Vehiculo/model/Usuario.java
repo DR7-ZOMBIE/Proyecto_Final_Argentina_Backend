@@ -22,28 +22,22 @@ public class Usuario {
     private Long ID;
 
     @Column(nullable = false)
-    private String cedula;
-
-    @Column(nullable = false)
     private String nombre;
 
     @Column(nullable = false)
-    private String direccion;
+    private String apellido;
 
     @Column(nullable = false)
-    private Boolean isLicencia;
-
-    @Column(nullable = false)
-    private String genero;
+    private String email;
 
     @Column(nullable = false)
     private String password;
 
     @Column(nullable = false)
-    private Integer edad;
+    private String password2;
 
     @Column(nullable = false)
-    private String email;
+    private String role;
 
     @OneToMany( mappedBy = "usuario" , cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore

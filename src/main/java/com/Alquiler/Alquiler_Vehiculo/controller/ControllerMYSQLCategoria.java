@@ -6,6 +6,7 @@ import com.Alquiler.Alquiler_Vehiculo.dto.CategoriaDTO;
 import com.Alquiler.Alquiler_Vehiculo.services.ICategoriaServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -40,7 +41,7 @@ public class ControllerMYSQLCategoria {
         Optional<CategoriaDTO> categoria = Optional.ofNullable(categoriaServices.findById(id));
 
         if(categoria.isPresent()){
-            return categoriaServices.findById(1L);
+            return categoriaServices.findById(id);
         }else{
             throw new Excepciones("La categoria no existe", HttpStatus.NOT_FOUND);
         }
@@ -62,8 +63,9 @@ public class ControllerMYSQLCategoria {
     // Agregar una categoria
     @RequestMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addCategoria(@RequestBody CategoriaDTO categoriaDTO){
+    public ResponseEntity<CategoriaDTO> addCategoria(@RequestBody CategoriaDTO categoriaDTO){
         categoriaServices.save(categoriaDTO);
+        return ResponseEntity.ok(categoriaDTO);
     }
 
     // Eliminar todas las categorias

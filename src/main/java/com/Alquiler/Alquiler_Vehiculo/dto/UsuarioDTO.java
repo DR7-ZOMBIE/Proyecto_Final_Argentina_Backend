@@ -15,21 +15,17 @@ public class UsuarioDTO {
 
     private Long ID;
 
-    private String cedula;
-
     private String nombre;
 
-    private String direccion;
-
-    private Boolean isLicencia;
-
-    private String genero;
-
-    private Integer edad;
+    private String apellido;
 
     private String email;
 
     private String password;
+
+    private String password2;
+
+    private String role;
 
     private Set<Reserva> reservas = new HashSet<Reserva>();
 

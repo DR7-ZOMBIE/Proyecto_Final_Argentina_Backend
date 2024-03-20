@@ -87,12 +87,19 @@ public class ControllerMYSQLUsuario {
         UsuarioDTO o = null;
 
         if (u.isPresent()){
-            o.setCedula(usuario.getCedula());
+            o.setEmail(usuario.getEmail());
             o.setNombre(usuario.getNombre());
         }else{
             throw new Excepciones("No hay usuario para actualizar", HttpStatus.NOT_FOUND);
         }
 
+    }
+
+    // Eliminar todos los usuarios
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping("/delete/all")
+    public void deleteAll(){
+        usuarioServices.deleteAll();
     }
 
 }

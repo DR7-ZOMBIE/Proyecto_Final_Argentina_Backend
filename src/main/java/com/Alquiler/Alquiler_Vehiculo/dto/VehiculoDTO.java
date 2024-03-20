@@ -17,19 +17,18 @@ public class VehiculoDTO {
 
     private Long ID;
     private String marca;
-    private String modelo_Auto;
-    private String serialChasis;
+    private String modelo;
+    private String codigoSerial;
     private String serialMotor;
     private String color;
-    private LocalDate anio;
+    private LocalDate year;
     private String matricula;
+    private String placa;
     private Boolean isDisponible;
     private String observacion;
     private String descripcion;
-    private Boolean isFavorito;
-    private Set<Reserva> reservas = new HashSet<>();
 
-    public void setId(long l) {
-    }
+    private Categoria categoria;
+    private Reserva reservas;
 
 }

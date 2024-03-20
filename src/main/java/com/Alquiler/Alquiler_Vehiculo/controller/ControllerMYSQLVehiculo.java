@@ -89,4 +89,16 @@ public class ControllerMYSQLVehiculo {
             throw new Excepciones("El vehiculo no se puede actualizar", HttpStatus.NOT_FOUND);
         }
     }
+
+    // Eliminar todos los vehiculos
+    @DeleteMapping("/delete/all")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteAllVehiculos(){
+        Optional<Set<VehiculoDTO>> vehiculos = Optional.ofNullable(vehiculoServices.findAll());
+
+        for (VehiculoDTO v : vehiculos.get()){
+            vehiculoServices.deleteById(v.getID());
+        }
+    }
+
 }

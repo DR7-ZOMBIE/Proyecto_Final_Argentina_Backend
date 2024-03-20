@@ -1,8 +1,10 @@
 package com.Alquiler.Alquiler_Vehiculo.dto;
 
+import com.Alquiler.Alquiler_Vehiculo.model.Vehiculo;
 import lombok.*;
 
 import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -13,7 +15,12 @@ public class CategoriaDTO {
 
     private Long id;
 
-    private String nombre;
+    private String titulo;
 
-    private HashSet<VehiculoDTO> vehiculos = new HashSet<>();
+    private String descripcion;
+
+    private String imagen;
+
+    private Set<Vehiculo> vehiculos = new HashSet<>();
+
 }

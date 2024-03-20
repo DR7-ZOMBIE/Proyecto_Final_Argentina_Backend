@@ -86,4 +86,11 @@ public class ControllerMYSQLReserva {
         } else throw new Excepciones("No hay reserva para actualizar", HttpStatus.NOT_FOUND);
 
     }
+
+    // Eliminar todas las reservas
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping("/delete/all")
+    public void deleteAllReservas(){
+        reservaServices.deleteAll();
+    }
 }

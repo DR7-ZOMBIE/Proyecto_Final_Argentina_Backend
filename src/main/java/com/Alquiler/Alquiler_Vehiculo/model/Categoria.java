@@ -19,7 +19,13 @@ public class Categoria {
     private Long id;
 
     @Column(nullable = false)
-    private String nombre;
+    private String titulo;
+
+    @Column(nullable = false)
+    private String descripcion;
+
+    @Column(nullable = false)
+    private String imagen;
 
     @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore

@@ -42,18 +42,15 @@ public class Reserva {
     @JoinColumn( name = "usuario_id" , nullable = false)
     @ManyToOne ( fetch = FetchType.LAZY , cascade = CascadeType.ALL)
     private Usuario usuario;
-    // Un usuario tiene Un metodo de pago favorito
+
+    // Una reserva tiene un metodo de pago
     @OneToOne(cascade= CascadeType.ALL )
     @JoinColumn(name= "pago_id", referencedColumnName = "id")
     private MetodoPago metodoDePago;
 
-    // Muchos vehiculos tienen una reserva
-    @ManyToMany
-    @JoinTable(
-            name = "reserva_vehiculo",
-            joinColumns = @JoinColumn(name = "reserva_id"),
-            inverseJoinColumns = @JoinColumn(name = "vehiculo_id")
-    )
-    private Set<Vehiculo> vehiculos = new HashSet<>();
+    // Una reserva tiene un vehiculo
+    @OneToOne(cascade= CascadeType.ALL )
+    @JoinColumn(name= "vehiculo_id", referencedColumnName = "id")
+    private Vehiculo vehiculo;
 
 }
