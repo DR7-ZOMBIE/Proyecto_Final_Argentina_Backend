@@ -1,5 +1,6 @@
 package com.Alquiler.Alquiler_Vehiculo.dto;
 
+import com.Alquiler.Alquiler_Vehiculo.model.Categoria;
 import com.Alquiler.Alquiler_Vehiculo.model.Reserva;
 import lombok.*;
 
@@ -17,7 +18,6 @@ public class VehiculoDTO {
     private Long ID;
     private String marca;
     private String modelo_Auto;
-    private Integer categoriaId;
     private String serialChasis;
     private String serialMotor;
     private String color;
@@ -26,8 +26,10 @@ public class VehiculoDTO {
     private Boolean isDisponible;
     private String observacion;
     private String descripcion;
+    private Boolean isFavorito;
     private Set<Reserva> reservas = new HashSet<>();
 
     public void setId(long l) {
     }
+
 }

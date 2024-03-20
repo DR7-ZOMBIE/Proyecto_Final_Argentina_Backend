@@ -56,6 +56,4 @@ public class Reserva {
     )
     private Set<Vehiculo> vehiculos = new HashSet<>();
 
-
-
 }

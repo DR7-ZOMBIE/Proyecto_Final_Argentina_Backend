@@ -31,8 +31,6 @@ public class Vehiculo {
     @Column(nullable = false)
     private String modelo_Auto;
     @Column(nullable = false)
-    private Integer categoriaId;
-    @Column(nullable = false)
     private String kilometraje;
     @Column(nullable = false)
     private String serialChasis;
@@ -67,7 +65,16 @@ public class Vehiculo {
     @Column(nullable = false)
     private String descripcion;
 
+    @Column(nullable = false)
+    private Boolean isFavorito;
+
     @ManyToMany(mappedBy = "vehiculos", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     private Set<Reserva> reservas = new HashSet<>();
+
+    // Muchas vehiculos tienen una categoria
+    @JsonIgnore
+    @JoinColumn( name = "categoria_id" , nullable = false)
+    @ManyToOne ( fetch = FetchType.LAZY , cascade = CascadeType.ALL)
+    private Categoria categoria;
 
 }

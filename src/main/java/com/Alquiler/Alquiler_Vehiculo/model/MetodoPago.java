@@ -1,5 +1,6 @@
 package com.Alquiler.Alquiler_Vehiculo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,4 +33,9 @@ public class MetodoPago {
         this.cve = cve;
         this.anioVencimiento = anioVencimiento;
     }
+
+    @OneToOne(mappedBy = "metodoDePago" , cascade = CascadeType.ALL, fetch = FetchType.LAZY )
+    @JsonIgnore
+    private Reserva reserva;
+
 }
