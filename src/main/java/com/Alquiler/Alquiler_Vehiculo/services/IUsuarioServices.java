@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 public interface IUsuarioServices extends UserDetailsService {
-    Usuario guardar(UsuarioDTO registroDTO);
+    Usuario guardarUsuario(UsuarioDTO registroDTO);
 
     //UsuarioDTO save(T t); // Guardar a un usuario en el sistema
 
