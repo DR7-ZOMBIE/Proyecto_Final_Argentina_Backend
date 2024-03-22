@@ -1,14 +1,11 @@
 package com.Alquiler.Alquiler_Vehiculo.model;
 
+import com.Alquiler.Alquiler_Vehiculo.model.user.Usuario;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Date;
 import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.HashSet;
-import java.util.Set;
 
 @Getter
 @Setter

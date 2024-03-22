@@ -1,8 +1,7 @@
 package com.Alquiler.Alquiler_Vehiculo.dto;
 
-import com.Alquiler.Alquiler_Vehiculo.model.Usuario;
+import com.Alquiler.Alquiler_Vehiculo.model.user.Usuario;
 import com.Alquiler.Alquiler_Vehiculo.model.Vehiculo;
-import jakarta.persistence.Column;
 import lombok.*;
 
 import java.time.LocalDate;

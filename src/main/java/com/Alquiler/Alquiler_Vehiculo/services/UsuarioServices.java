@@ -1,15 +1,12 @@
 package com.Alquiler.Alquiler_Vehiculo.services;
 
 import com.Alquiler.Alquiler_Vehiculo.dto.UsuarioDTO;
-import com.Alquiler.Alquiler_Vehiculo.dto.VehiculoDTO;
-import com.Alquiler.Alquiler_Vehiculo.model.Usuario;
-import com.Alquiler.Alquiler_Vehiculo.model.Vehiculo;
+import com.Alquiler.Alquiler_Vehiculo.model.user.Usuario;
 import com.Alquiler.Alquiler_Vehiculo.register.IDAOUsuario;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import java.util.HashSet;
 import java.util.List;
