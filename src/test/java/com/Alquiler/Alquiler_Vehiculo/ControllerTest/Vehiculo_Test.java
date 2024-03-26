@@ -115,7 +115,7 @@ public class Vehiculo_Test {
         // ... establecer otros atributos del DTO ...
 
         VehiculoDTO vehiculoGuardado = new VehiculoDTO();
-        vehiculoGuardado.setId(1L); // Asignar un ID para la simulación del guardado
+        vehiculoGuardado.setID(1L); // Asignar un ID para la simulación del guardado
         vehiculoGuardado.setColor("Rojo");
         // ... establecer otros atributos del DTO guardado ...
 

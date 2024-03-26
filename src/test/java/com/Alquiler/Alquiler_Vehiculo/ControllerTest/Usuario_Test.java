@@ -46,11 +46,11 @@ public class Usuario_Test {
     public void testUsuarioDTO_GettersAndSetters() {
         UsuarioDTO usuarioDTO = new UsuarioDTO();
         usuarioDTO.setID(1L);
-        usuarioDTO.setCedula("12345678");
+        usuarioDTO.setEmail("12345678");
         usuarioDTO.setNombre("Juan Pérez");
 
         assertEquals(1L, usuarioDTO.getID().longValue());
-        assertEquals("12345678", usuarioDTO.getCedula());
+        assertEquals("12345678", usuarioDTO.getEmail());
         assertEquals("Juan Pérez", usuarioDTO.getNombre());
     }
 
