@@ -34,11 +34,17 @@ public class SecurityFilter {
 
                     // Permitir acceso a Swagger
                     authConfig.requestMatchers("/v2/api-docs",
+                            "/api/v1/auth/**",
+                            "/v2/api-docs",
+                            "/v3/api-docs",
+                            "/v3/api-docs/**",
                             "/configuration/ui",
+                            "/swagger-resources",
                             "/swagger-resources/**",
                             "/configuration/security",
                             "/swagger-ui.html",
                             "/webjars/**",
+                            "/docs/**",
                             "/swagger-ui/**").permitAll();
 
                     authConfig.requestMatchers(HttpMethod.GET, "/reservas").hasAuthority("READ_ALL_RESERVAS");

@@ -3,6 +3,8 @@ package com.Alquiler.Alquiler_Vehiculo.controller;
 import com.Alquiler.Alquiler_Vehiculo.Excepciones;
 import com.Alquiler.Alquiler_Vehiculo.dto.UsuarioDTO;
 import com.Alquiler.Alquiler_Vehiculo.services.IUsuarioServices;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +16,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/user")
+@Tag( name = "User")
 @CrossOrigin (origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class ControllerMYSQLUsuario {
 
@@ -26,6 +29,7 @@ public class ControllerMYSQLUsuario {
     private ModelMapper mapper;
 
     // Listar todos los usuario
+    @Operation( summary = "Este método se emplea para listar todos los usuarios")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/list")
     private Set<UsuarioDTO> listAll(){
@@ -40,6 +44,7 @@ public class ControllerMYSQLUsuario {
     }
 
     // Buscar un usuario
+    @Operation (summary = "Este método se emplea para busar un usuario")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/list/{id}")
     public UsuarioDTO findUser(@RequestParam Long id){
@@ -54,7 +59,7 @@ public class ControllerMYSQLUsuario {
     }
 
     // Eliminar un usuario
-
+    @Operation ( summary = "Este método se emplea para eliminar un usuario")
     @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("/delete/{id}")
     public void deleteUser(@RequestParam Long id){
@@ -69,6 +74,7 @@ public class ControllerMYSQLUsuario {
     }
 
     // Agregar un Usuario
+    @Operation( summary = "Este método se emplea para agragar un usuario")
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/add")
     public ResponseEntity<UsuarioDTO> addUser(@RequestBody UsuarioDTO usuario){
@@ -79,6 +85,7 @@ public class ControllerMYSQLUsuario {
     }
 
     // Modificar un Usuario
+    @Operation( summary = "Este método se emplea para modificar un usuario")
     @ResponseStatus(HttpStatus.OK)
     @PutMapping("/update/{id}")
     public void updateUser(@RequestBody UsuarioDTO usuario, @RequestParam Long id){
@@ -96,6 +103,7 @@ public class ControllerMYSQLUsuario {
     }
 
     // Eliminar todos los usuarios
+    @Operation (summary = "Este método se emplea para eliminar todos los usuarios")
     @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("/delete/all")
     public void deleteAll(){

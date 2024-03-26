@@ -3,6 +3,8 @@ package com.Alquiler.Alquiler_Vehiculo.controller;
 import com.Alquiler.Alquiler_Vehiculo.Excepciones;
 import com.Alquiler.Alquiler_Vehiculo.dto.VehiculoDTO;
 import com.Alquiler.Alquiler_Vehiculo.services.IVehiculoServices;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +15,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping ("/vehiculo")
+@Tag(name = "Vehiculo")
 @CrossOrigin (origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class ControllerMYSQLVehiculo {
     @Autowired
@@ -22,6 +25,7 @@ public class ControllerMYSQLVehiculo {
     private ModelMapper mapper; // Tranformacion de objetos DTO
 
     // Listar todos los vehiculos
+    @Operation( summary = "Este método se emplea para listar todos los vehículos")
     @GetMapping("/list")
     @ResponseStatus(HttpStatus.OK)
     public Set<VehiculoDTO> listVehiculos(){
@@ -37,6 +41,7 @@ public class ControllerMYSQLVehiculo {
     }
 
     // Buscar vehiculo especifico
+    @Operation( summary = "Este método se emplea para buscar un vehículo específico")
     @GetMapping("/list/{id}")
     @ResponseStatus(HttpStatus.OK)
     public VehiculoDTO findById(@PathVariable Long id){
@@ -51,6 +56,7 @@ public class ControllerMYSQLVehiculo {
     }
 
     // Agregar vehiculo al sistema
+    @Operation( summary = "Este método se emplea para agregar un vehículo al sistema")
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<VehiculoDTO> addVehiculo(@RequestBody VehiculoDTO vehiculoDTO){
@@ -60,6 +66,7 @@ public class ControllerMYSQLVehiculo {
     }
 
     // Elminar un vehiculo
+    @Operation( summary = "Este método se emplea para eliminar un vehículo")
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteVehiculo(@PathVariable Long id){
@@ -75,6 +82,7 @@ public class ControllerMYSQLVehiculo {
     }
 
     // Actualizando un vehiculo
+    @Operation( summary = "Este método se emplea para actualizar un vehículo")
     @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void updateVehiculo(@PathVariable Long id, @RequestBody VehiculoDTO vehiculoDTO){
@@ -91,6 +99,7 @@ public class ControllerMYSQLVehiculo {
     }
 
     // Eliminar todos los vehiculos
+    @Operation(summary = "Este método se emplea para eliminar todos los vehículos")
     @DeleteMapping("/delete/all")
     @ResponseStatus(HttpStatus.OK)
     public void deleteAllVehiculos(){

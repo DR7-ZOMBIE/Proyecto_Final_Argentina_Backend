@@ -3,6 +3,8 @@ package com.Alquiler.Alquiler_Vehiculo.controller;
 import com.Alquiler.Alquiler_Vehiculo.Excepciones;
 import com.Alquiler.Alquiler_Vehiculo.dto.MetodoPagoDTO;
 import com.Alquiler.Alquiler_Vehiculo.services.IMetodoPagoServices;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +15,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/metodoPago")
+@Tag(name = "MetodoPago")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class ControllerMYSQLMetodoPago {
 
@@ -23,6 +26,7 @@ public class ControllerMYSQLMetodoPago {
     private ModelMapper mapper; // Tranformar un objeto DTO
 
     // Listar todos los metodos de pago
+    @Operation( summary = "Este método se emplea para listar todos los métodos de pago")
     @GetMapping("/list")
     @ResponseStatus(HttpStatus.OK)
     public Set<MetodoPagoDTO> listMetodoPago(){
@@ -35,6 +39,7 @@ public class ControllerMYSQLMetodoPago {
     }
 
     // Buscar un metodo de pago
+    @Operation( summary = "Este método se emplea para buscar un método de pago por Id")
     @GetMapping("/list/id")
     @ResponseStatus(HttpStatus.OK)
     public MetodoPagoDTO findMetodoPago(@RequestParam Long id){
@@ -47,6 +52,7 @@ public class ControllerMYSQLMetodoPago {
     }
 
     // Eliminar un metodo de pago
+    @Operation( summary = "Este método se emplea para eliminar un método de pago")
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteMetodoPago(@RequestParam Long id) {
@@ -60,6 +66,7 @@ public class ControllerMYSQLMetodoPago {
     }
 
     // Agregar una metodo de pago
+    @Operation( summary = "Este método se emplea para agregar un método de pago")
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/add")
     public ResponseEntity<MetodoPagoDTO> addReserva(@RequestBody MetodoPagoDTO metodoPagoDTO){
@@ -68,6 +75,7 @@ public class ControllerMYSQLMetodoPago {
     }
 
     // Eliminar todos los metodos de pago
+    @Operation( summary = "Este método se emplea para eliminar todos los métodos de pago")
     @DeleteMapping("/deleteAll")
     @ResponseStatus(HttpStatus.OK)
     public void deleteAllMetodoPago(){
@@ -75,6 +83,7 @@ public class ControllerMYSQLMetodoPago {
     }
 
     // modificar un metodo de pago
+    @Operation( summary = "Este método se emplea para modificar un método de pago")
     @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<MetodoPagoDTO> updateMetodoPago(@RequestBody MetodoPagoDTO metodoPagoDTO, @RequestParam Long id){

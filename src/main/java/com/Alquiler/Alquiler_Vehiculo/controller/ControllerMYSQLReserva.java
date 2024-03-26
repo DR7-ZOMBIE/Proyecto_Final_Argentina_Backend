@@ -3,6 +3,8 @@ package com.Alquiler.Alquiler_Vehiculo.controller;
 import com.Alquiler.Alquiler_Vehiculo.Excepciones;
 import com.Alquiler.Alquiler_Vehiculo.dto.ReservaDTO;
 import com.Alquiler.Alquiler_Vehiculo.services.IReservaServices;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,6 +16,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/reserva")
+@Tag( name = "Reserva")
 @CrossOrigin (origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class ControllerMYSQLReserva {
 
@@ -24,6 +27,7 @@ public class ControllerMYSQLReserva {
     private ModelMapper mapper; // Tranformar un objeto DTO
 
     // Listar todas las reservas
+    @Operation( summary = "Este método se emplea para listar todas las categorías")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/list")
     public Set<ReservaDTO> listReservas(){
@@ -39,6 +43,7 @@ public class ControllerMYSQLReserva {
     }
 
     // Buscar un reserva
+    @Operation( summary = "Este método se emplea para buscar una reserva")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/list/id")
     public ReservaDTO findReserva(@RequestParam Long id){
@@ -53,6 +58,7 @@ public class ControllerMYSQLReserva {
     }
 
     // Eliminar una reserva
+    @Operation( summary = "Este método se emplea para eliminar una reserva")
     @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("/delete/{id}")
     public void deleteReserva(@RequestParam Long id){
@@ -65,6 +71,7 @@ public class ControllerMYSQLReserva {
     }
 
     // Agregar una reserva
+    @Operation ( summary = "Este método se emplea para agregar una reserva")
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/add")
     public ResponseEntity<ReservaDTO> addReserva(@RequestBody ReservaDTO reservaDTO){
@@ -73,6 +80,7 @@ public class ControllerMYSQLReserva {
     }
 
     // Modificar una reserva
+    @Operation ( summary = "Este método se emplea para modificar una reserva" )
     @ResponseStatus(HttpStatus.OK)
     @PutMapping("/update/{id}")
     public void updateReserva(@RequestBody ReservaDTO reservaDTO , @RequestParam Long id){
@@ -88,6 +96,7 @@ public class ControllerMYSQLReserva {
     }
 
     // Eliminar todas las reservas
+    @Operation( summary = "Este método se emplea para eliminar todas las categorías")
     @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("/delete/all")
     public void deleteAllReservas(){
