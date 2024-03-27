@@ -25,7 +25,8 @@ public class ControllerMYSQLVehiculo {
     private ModelMapper mapper; // Tranformacion de objetos DTO
 
     // Listar todos los vehiculos
-    @Operation( summary = "Este método se emplea para listar todos los vehículos")
+    @Operation( summary = "Este método se emplea para listar todos los vehículos",
+            description = "Esta es una prueba de la descrición")
     @GetMapping("/list")
     @ResponseStatus(HttpStatus.OK)
     public Set<VehiculoDTO> listVehiculos(){
