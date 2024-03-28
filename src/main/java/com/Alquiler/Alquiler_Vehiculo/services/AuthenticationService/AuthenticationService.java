@@ -6,6 +6,7 @@ import com.Alquiler.Alquiler_Vehiculo.register.IDAOUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -49,15 +50,16 @@ public class AuthenticationService {
 
 
     public AuthenticationResponse login(AuthenticationRequest request) {
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
-                request.getUsername(), request.getPassword()
+        Usuario usuario = userRepository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado: " + request.getEmail()));
+
+                UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
+                usuario.getEmail(), request.getPassword()
         );
 
         authenticationManager.authenticate(token);
 
-        Usuario usuario = (Usuario) userRepository.findByUsername(request.getUsername()).get();
-
-        String jwt = jwtservice.generateToken(usuario, generateExtraClaims(usuario));
+                String jwt = jwtservice.generateToken(usuario, generateExtraClaims(usuario));
 
         return new AuthenticationResponse(jwt);
     }

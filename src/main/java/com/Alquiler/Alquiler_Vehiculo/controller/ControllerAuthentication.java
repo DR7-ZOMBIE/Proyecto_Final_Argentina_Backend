@@ -34,7 +34,8 @@ public class ControllerAuthentication {
     @Operation(summary = "Este método se emplea para realizar autenticación de usuario")
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request) {
-        return ResponseEntity.ok(authenticationService.login(request));
+        AuthenticationResponse response = authenticationService.login(request);
+        return ResponseEntity.ok(response);
     }
 
 }
