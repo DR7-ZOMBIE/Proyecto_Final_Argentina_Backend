@@ -28,6 +28,38 @@ public class SecurityFilter {
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(authConfig -> {
+                    authConfig.requestMatchers(HttpMethod.POST,"/auth/register").permitAll()
+                            .requestMatchers(HttpMethod.POST,"/auth/authenticate").permitAll()
+                            .requestMatchers(HttpMethod.GET,"/error").permitAll()
+
+                            .requestMatchers("/v2/api-docs",
+                                            "/api/v1/auth/**",
+                                            "/v2/api-docs",
+                                            "/v3/api-docs",
+                                            "/v3/api-docs/**",
+                                            "/configuration/ui",
+                                            "/swagger-resources",
+                                            "/swagger-resources/**",
+                                            "/configuration/security",
+                                            "/swagger-ui.html",
+                                            "/webjars/**",
+                                            "/docs/**",
+                                            "/swagger-ui/**").permitAll()
+                            .requestMatchers(HttpMethod.GET, "/reservas").hasAuthority("READ_ALL_RESERVAS")
+                            .requestMatchers(HttpMethod.POST, "/reservas").hasAuthority("SAVE_ONE_RESERVA")
+                            .anyRequest().denyAll();
+                        }
+
+                );
+
+
+        return http.build();
+    }
+
+}
+
+/*
+                        authConfig -> {
                     authConfig.requestMatchers(HttpMethod.POST, "/auth/register").permitAll(); // Permitir el acceso al endpoint de registro
                     authConfig.requestMatchers(HttpMethod.POST, "/auth/authenticate").permitAll();
                     authConfig.requestMatchers(HttpMethod.GET, "/error").permitAll();
@@ -50,10 +82,16 @@ public class SecurityFilter {
                     authConfig.requestMatchers(HttpMethod.GET, "/reservas").hasAuthority("READ_ALL_RESERVAS");
                     authConfig.requestMatchers(HttpMethod.POST, "/reservas").hasAuthority("SAVE_ONE_RESERVA");
 
+
                     authConfig.anyRequest().denyAll();
-                });
+                })
+                .formLogin(form -> form
+                        .loginPage("/auth/authenticate")
+                        .usernameParameter("email")
+                        .permitAll());
 
         return http.build();
     }
 }
 
+*/

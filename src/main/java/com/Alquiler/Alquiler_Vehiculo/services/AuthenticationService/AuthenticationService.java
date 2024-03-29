@@ -50,11 +50,11 @@ public class AuthenticationService {
 
 
     public AuthenticationResponse login(AuthenticationRequest request) {
-        Usuario usuario = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado: " + request.getEmail()));
+        Usuario usuario = userRepository.findByUsername(request.getUsername())
+                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado: " + request.getUsername()));
 
                 UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
-                usuario.getEmail(), request.getPassword()
+                usuario.getUsername(), request.getPassword()
         );
 
         authenticationManager.authenticate(token);
