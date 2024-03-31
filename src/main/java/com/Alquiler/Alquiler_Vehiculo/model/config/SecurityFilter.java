@@ -10,6 +10,12 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
+
+import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
@@ -28,12 +34,12 @@ public class SecurityFilter {
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(authConfig -> {
-                    authConfig.requestMatchers(HttpMethod.POST, "/auth/register").permitAll(); // Permitir el acceso al endpoint de registro
+                    authConfig.requestMatchers(HttpMethod.POST, "/auth/register").permitAll();
                     authConfig.requestMatchers(HttpMethod.POST, "/auth/authenticate").permitAll();
                     authConfig.requestMatchers(HttpMethod.GET, "/error").permitAll();
 
-                    // Permitir acceso a Swagger
                     authConfig.requestMatchers("/v2/api-docs",
+                            "/**",
                             "/api/v1/auth/**",
                             "/v2/api-docs",
                             "/v3/api-docs",
@@ -50,10 +56,21 @@ public class SecurityFilter {
                     authConfig.requestMatchers(HttpMethod.GET, "/reservas").hasAuthority("READ_ALL_RESERVAS");
                     authConfig.requestMatchers(HttpMethod.POST, "/reservas").hasAuthority("SAVE_ONE_RESERVA");
 
-                    authConfig.anyRequest().denyAll();
+                    authConfig.requestMatchers("/admin/**").hasAuthority("READ_ONE_RESERVA");
+                    authConfig.requestMatchers("/admin/**").hasAuthority("SAVE_ONE_RESERVA");
                 });
-
         return http.build();
     }
-}
 
+    // Configuración de CORS
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList("*"));
+        configuration.setAllowedMethods(Arrays.asList("*"));
+        configuration.setAllowedHeaders(Arrays.asList("*"));
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
+}
