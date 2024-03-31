@@ -49,12 +49,11 @@ public class Vehiculo {
     // Muchas vehiculos tienen una categoria
     @JsonIgnore
     @JoinColumn( name = "categoria_id" , nullable = false)
-    @ManyToOne ( fetch = FetchType.LAZY , cascade = CascadeType.ALL)
+    @ManyToOne ( fetch = FetchType.LAZY , cascade = CascadeType.MERGE)
     private Categoria categoria;
 
     // Un vehiculo tiene una reserva
     @OneToOne(mappedBy = "vehiculo", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     private Reserva reservas;
-
 
 }

@@ -47,7 +47,7 @@ public class Usuario implements UserDetails {
     @Column(nullable = false)
     private Role role;
 
-    @OneToMany( mappedBy = "usuario" , cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany( mappedBy = "usuario" , cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JsonIgnore
     private Set<Reserva> reservas = new HashSet<Reserva>();
 

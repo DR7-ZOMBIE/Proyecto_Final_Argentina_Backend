@@ -41,12 +41,12 @@ public class Reserva {
     private Usuario usuario;
 
     // Una reserva tiene un metodo de pago
-    @OneToOne(cascade= CascadeType.ALL )
+    @OneToOne(cascade= CascadeType.MERGE )
     @JoinColumn(name= "pago_id", referencedColumnName = "id")
     private MetodoPago metodoDePago;
 
     // Una reserva tiene un vehiculo
-    @OneToOne(cascade= CascadeType.ALL )
+    @OneToOne(cascade= CascadeType.MERGE )
     @JoinColumn(name= "vehiculo_id", referencedColumnName = "id")
     private Vehiculo vehiculo;
 

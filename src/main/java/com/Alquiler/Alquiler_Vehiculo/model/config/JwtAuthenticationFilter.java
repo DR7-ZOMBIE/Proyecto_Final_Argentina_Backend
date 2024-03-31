@@ -36,7 +36,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         // 2 Obtain jwt token
 
-        String jwt = authorizationHeader.split("")[1];
+        String jwt = authorizationHeader.split(" ")[1];
 
         // 3 Obtain Subject/username from jwt token
 

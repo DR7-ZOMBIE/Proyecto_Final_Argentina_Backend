@@ -1,5 +1,6 @@
 package com.Alquiler.Alquiler_Vehiculo.model.config;
 
+import com.Alquiler.Alquiler_Vehiculo.model.user.Permission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +16,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import java.security.Permissions;
 import java.util.Arrays;
 
 @Configuration
@@ -53,11 +55,34 @@ public class SecurityFilter {
                             "/docs/**",
                             "/swagger-ui/**").permitAll();
 
-                    authConfig.requestMatchers(HttpMethod.GET, "/reservas").hasAuthority("READ_ALL_RESERVAS");
-                    authConfig.requestMatchers(HttpMethod.POST, "/reservas").hasAuthority("SAVE_ONE_RESERVA");
+                    // Configuraciones para las reservas con autenticacion
+                    authConfig.requestMatchers(HttpMethod.GET, "/reserva/list").hasAuthority(Permission.READ_ALL_RESERVAS.name());
+                    authConfig.requestMatchers(HttpMethod.POST, "/reserva/add").hasAuthority(Permission.SAVE_ONE_RESERVA.name());
+                    authConfig.requestMatchers(HttpMethod.DELETE, "/reserva/delete/{id}").hasAuthority(Permission.DELETE_ONE_RESERVA.name());
+                    authConfig.requestMatchers(HttpMethod.PUT, "/reserva/update/{id}").hasAuthority(Permission.UPDATE_ONE_RESERVA.name());
+                    authConfig.requestMatchers(HttpMethod.GET, "reserva/list/{id}").hasAuthority(Permission.READ_ONE_RESERVA.name());
 
-                    authConfig.requestMatchers("/admin/**").hasAuthority("READ_ONE_RESERVA");
-                    authConfig.requestMatchers("/admin/**").hasAuthority("SAVE_ONE_RESERVA");
+                    // Configuraciones para los vehiculos con autenticacion
+                    authConfig.requestMatchers(HttpMethod.GET, "/vehiculo/list").hasAuthority(Permission.READ_ALL_VEHICULOS.name());
+                    authConfig.requestMatchers(HttpMethod.POST, "/vehiculo/add").hasAuthority(Permission.SAVE_ONE_VEHICULO.name());
+                    authConfig.requestMatchers(HttpMethod.DELETE, "/vehiculo/delete/{id}").hasAuthority(Permission.DELETE_ONE_VEHICULO.name());
+                    authConfig.requestMatchers(HttpMethod.PUT, "/vehiculo/update/{id}").hasAuthority(Permission.UPDATE_ONE_VEHICULO.name());
+                    authConfig.requestMatchers(HttpMethod.GET, "vehiculo/list/{id}").hasAuthority(Permission.READ_ONE_VEHICULO.name());
+
+                    // Configuraciones para los usuarios con autenticacion
+                    authConfig.requestMatchers(HttpMethod.GET, "/user/list").hasAuthority(Permission.READ_ALL_USUARIOS.name());
+                    authConfig.requestMatchers(HttpMethod.POST, "/user/add").hasAuthority(Permission.SAVE_ONE_USUARIO.name());
+                    authConfig.requestMatchers(HttpMethod.DELETE, "/user/delete/{id}").hasAuthority(Permission.DELETE_ONE_USUARIO.name());
+                    authConfig.requestMatchers(HttpMethod.PUT, "/user/update/{id}").hasAuthority(Permission.UPDATE_ONE_USUARIO.name());
+                    authConfig.requestMatchers(HttpMethod.GET, "user/list/{id}").hasAuthority(Permission.READ_ONE_USUARIO.name());
+
+                    // Configuraciones para las categorias con autenticacion
+                    authConfig.requestMatchers(HttpMethod.GET, "/categoria/list").hasAuthority(Permission.READ_ALL_CATEGORY.name());
+                    authConfig.requestMatchers(HttpMethod.POST, "/categoria/add").hasAuthority(Permission.SAVE_ONE_CATEGORY.name());
+                    authConfig.requestMatchers(HttpMethod.DELETE, "/categoria/delete/{id}").hasAuthority(Permission.DELETE_ONE_CATEGORY.name());
+                    authConfig.requestMatchers(HttpMethod.PUT, "/categoria/update/{id}").hasAuthority(Permission.UPDATE_ONE_CATEGORY.name());
+                    authConfig.requestMatchers(HttpMethod.GET, "categoria/list/{id}").hasAuthority(Permission.READ_ONE_CATEGORY.name());
+
                 });
         return http.build();
     }

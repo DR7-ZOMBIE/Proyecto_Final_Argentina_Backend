@@ -35,7 +35,7 @@ public class MetodoPago {
         this.anioVencimiento = anioVencimiento;
     }
 
-    @OneToOne(mappedBy = "metodoDePago" , cascade = CascadeType.ALL, fetch = FetchType.LAZY )
+    @OneToOne(mappedBy = "metodoDePago" , cascade = CascadeType.MERGE, fetch = FetchType.LAZY )
     @JsonIgnore
     private Reserva reserva;
 
