@@ -6,7 +6,11 @@ import java.util.List;
 public enum Role {
 
     CUSTOMER(Arrays.asList(Permission.READ_ALL_RESERVAS, Permission.READ_ALL_USUARIOS, Permission.READ_ALL_METODOS_PAGO,
-            Permission.READ_ALL_CATEGORY, Permission.READ_ALL_VEHICULOS)),
+            Permission.READ_ALL_CATEGORY, Permission.READ_ALL_VEHICULOS, Permission.SAVE_ONE_RESERVA,
+            Permission.DELETE_ONE_RESERVA, Permission.UPDATE_ONE_RESERVA, Permission.READ_ONE_RESERVA,
+            Permission.DELETE_ONE_USUARIO, Permission.UPDATE_ONE_USUARIO, Permission.READ_ONE_USUARIO,
+            Permission.SAVE_ONE_METODO_PAGO, Permission.DELETE_ONE_METODO_PAGO, Permission.UPDATE_ONE_METODO_PAGO,
+            Permission.READ_ONE_METODO_PAGO, Permission.READ_ONE_VEHICULO, Permission.READ_ONE_CATEGORY)),
     ADMIN(Arrays.asList(Permission.READ_ALL_RESERVAS, Permission.SAVE_ONE_RESERVA, Permission.DELETE_ONE_RESERVA,
             Permission.UPDATE_ONE_RESERVA, Permission.READ_ONE_RESERVA, Permission.READ_ALL_USUARIOS,
             Permission.SAVE_ONE_USUARIO, Permission.DELETE_ONE_USUARIO, Permission.UPDATE_ONE_USUARIO,
