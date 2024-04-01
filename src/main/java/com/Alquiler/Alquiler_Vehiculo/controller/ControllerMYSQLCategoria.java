@@ -40,7 +40,7 @@ public class ControllerMYSQLCategoria {
 
     // Buscar una categoria
     @Operation (summary = "Este metodo se usa para buscar una categoría")
-    @RequestMapping("/list/id")
+    @RequestMapping("/list/{id}")
     @ResponseStatus(HttpStatus.OK)
     public CategoriaDTO findCategoria(@RequestParam Long id){
         Optional<CategoriaDTO> categoria = Optional.ofNullable(categoriaServices.findById(id));

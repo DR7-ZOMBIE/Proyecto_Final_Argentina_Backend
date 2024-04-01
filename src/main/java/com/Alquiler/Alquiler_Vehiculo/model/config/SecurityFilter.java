@@ -83,6 +83,13 @@ public class SecurityFilter {
                     authConfig.requestMatchers(HttpMethod.PUT, "/categoria/update/{id}").hasAuthority(Permission.UPDATE_ONE_CATEGORY.name());
                     authConfig.requestMatchers(HttpMethod.GET, "categoria/list/{id}").hasAuthority(Permission.READ_ONE_CATEGORY.name());
 
+                    // Configuraciones para los metodos de pago con autenticacion
+                    authConfig.requestMatchers(HttpMethod.GET, "/metodoPago/list").hasAuthority(Permission.READ_ALL_METODOS_PAGO.name());
+                    authConfig.requestMatchers(HttpMethod.POST, "/metodoPago/add").hasAuthority(Permission.SAVE_ONE_METODO_PAGO.name());
+                    authConfig.requestMatchers(HttpMethod.DELETE, "/metodoPago/delete/{id}").hasAuthority(Permission.DELETE_ONE_METODO_PAGO.name());
+                    authConfig.requestMatchers(HttpMethod.PUT, "/metodoPago/update/{id}").hasAuthority(Permission.UPDATE_ONE_METODO_PAGO.name());
+                    authConfig.requestMatchers(HttpMethod.GET, "metodoPago/list/{id}").hasAuthority(Permission.READ_ONE_METODO_PAGO.name());
+
                 });
         return http.build();
     }
