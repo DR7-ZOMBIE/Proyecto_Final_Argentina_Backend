@@ -32,10 +32,14 @@ public class AuthenticationService {
     public AuthenticationResponse register(AuthenticationRequest request) {
         var usuario = new Usuario();
         usuario.setUsername(request.getUsername());
-        usuario.setPassword(passwordEncoder.encode(request.getPassword()));
+        if (request.getPassword() != null) {
+            usuario.setPassword(passwordEncoder.encode(request.getPassword()));
+        } else {
+            throw new RuntimeException("La contraseña no puede ser nula");
+        }
         usuario.setRole(request.getRole());
 
-        // Aquí es donde se asigna el apellido proveniente de la solicitud
+        // Aquí se asigna el apellido proveniente de la solicitud
         usuario.setApellido(request.getApellido());
         // Si tienes otros campos como 'nombre', 'email', etc., asegúrate de asignarlos aquí también
         usuario.setEmail(request.getEmail());
