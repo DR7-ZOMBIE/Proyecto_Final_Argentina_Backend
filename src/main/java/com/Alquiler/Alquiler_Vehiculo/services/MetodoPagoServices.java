@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -48,8 +49,10 @@ public class MetodoPagoServices implements IMetodoPagoServices<MetodoPagoDTO> {
     @Override
     public Set<MetodoPagoDTO> findAll() {
         List<MetodoPago> metodosPago = idaoMetodoPago.findAll();
-        Set<MetodoPagoDTO> metodosPagoDTO = null;
-        for ( MetodoPago i: metodosPago ) metodosPagoDTO.add(modelMapper.map(i, MetodoPagoDTO.class));
+        Set<MetodoPagoDTO> metodosPagoDTO = new HashSet<>(); // Inicializar el conjunto
+        for (MetodoPago metodoPago : metodosPago) {
+            metodosPagoDTO.add(modelMapper.map(metodoPago, MetodoPagoDTO.class));
+        }
         return metodosPagoDTO;
     }
 

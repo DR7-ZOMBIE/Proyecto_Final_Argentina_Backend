@@ -7,6 +7,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -46,9 +48,11 @@ public class CategoriaServices implements ICategoriaServices<CategoriaDTO>{
     @Override
     public Set<CategoriaDTO> findAll() {
         List<Categoria> categorias = idaoCategoria.findAll();
-        Set<CategoriaDTO> categoriasDTO = null;
+        Set<CategoriaDTO> categoriasDTO = new HashSet<>(); // Inicializar el conjunto
 
-        for ( Categoria i: categorias ) categoriasDTO.add(mapperModel.map(i, CategoriaDTO.class));
+        for (Categoria i: categorias) {
+            categoriasDTO.add(mapperModel.map(i, CategoriaDTO.class));
+        }
 
         return categoriasDTO;
     }

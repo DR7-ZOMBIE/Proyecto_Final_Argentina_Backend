@@ -2,6 +2,7 @@ package com.Alquiler.Alquiler_Vehiculo.dto;
 
 import com.Alquiler.Alquiler_Vehiculo.model.Categoria;
 import com.Alquiler.Alquiler_Vehiculo.model.Reserva;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -27,7 +28,7 @@ public class VehiculoDTO {
     private Boolean isDisponible;
     private String observacion;
     private String descripcion;
-
+@JsonIgnore
     private Categoria categoria;
     private Reserva reservas;
 
