@@ -61,9 +61,8 @@ public class ControllerMYSQLVehiculo {
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<VehiculoDTO> addVehiculo(@RequestBody VehiculoDTO vehiculoDTO){
-        vehiculoServices.save(vehiculoDTO);
-        return ResponseEntity.ok(vehiculoServices.save(vehiculoDTO));
-
+        VehiculoDTO vehiculo =  vehiculoServices.save(vehiculoDTO);
+        return ResponseEntity.ok(vehiculo);
     }
 
     // Elminar un vehiculo
