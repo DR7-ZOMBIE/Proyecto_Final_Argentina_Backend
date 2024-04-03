@@ -19,24 +19,18 @@ public class VehiculoDTO {
     private Long ID;
     private String marca;
     private String modelo;
-    @JsonIgnore
     private String codigoSerial;
     private String serialMotor;
     private String color;
     private LocalDate year;
     private String matricula;
-    @JsonIgnore
     private String placa;
     private Boolean isDisponible;
     private String observacion;
     private String descripcion;
 
     private Categoria categoria;
-<<<<<<< HEAD
 
-=======
-    @JsonIgnore
->>>>>>> 78adf7adfa28f494e5ad59c1b2bcd22164b8f0b8
     private Reserva reservas;
 
 }
