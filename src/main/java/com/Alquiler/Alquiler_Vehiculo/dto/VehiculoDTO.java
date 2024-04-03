@@ -15,7 +15,7 @@ import java.util.Set;
 @NoArgsConstructor
 @ToString
 public class VehiculoDTO {
-
+@JsonIgnore
     private Long ID;
     private String marca;
     private String modelo;
