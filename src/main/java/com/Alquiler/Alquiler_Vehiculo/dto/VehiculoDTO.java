@@ -19,15 +19,12 @@ public class VehiculoDTO {
     private Long ID;
     private String marca;
     private String modelo;
-    private String codigoSerial;
     private String serialMotor;
     private String color;
     private LocalDate year;
     private String matricula;
-    private String placa;
     private Boolean isDisponible;
     private String observacion;
-    private String descripcion;
 
     private Categoria categoria;
 

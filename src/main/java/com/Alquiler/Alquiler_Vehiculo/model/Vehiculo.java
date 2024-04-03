@@ -28,8 +28,6 @@ public class Vehiculo {
     @Column(nullable = false)
     private String modelo;
     @Column(nullable = false)
-    private String codigoSerial;
-    @Column(nullable = false)
     private String serialMotor;
     @Column(nullable = false)
     private String color;
@@ -38,13 +36,9 @@ public class Vehiculo {
     @Column(nullable = false)
     private String matricula;
     @Column(nullable = false)
-    private String placa;
-    @Column(nullable = false)
     private Boolean isDisponible;
     @Column(nullable = false)
     private String observacion;
-    @Column(nullable = false)
-    private String descripcion;
 
     // Muchas vehiculos tienen una categoria
     @JsonIgnore
