@@ -53,7 +53,8 @@ public class Vehiculo {
     private Categoria categoria;
 
     // Un vehiculo tiene una reserva
-    @OneToOne(mappedBy = "vehiculo", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @JsonIgnore
+    @OneToOne(mappedBy = "vehiculo", cascade = { CascadeType.MERGE })
     private Reserva reservas;
 
 }

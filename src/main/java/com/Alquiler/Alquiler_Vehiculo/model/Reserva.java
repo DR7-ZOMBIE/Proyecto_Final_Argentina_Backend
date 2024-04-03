@@ -42,11 +42,13 @@ public class Reserva {
 
     // Una reserva tiene un metodo de pago
     @OneToOne(cascade= CascadeType.MERGE )
+    @JsonIgnore
     @JoinColumn(name= "pago_id", referencedColumnName = "id")
     private MetodoPago metodoDePago;
 
     // Una reserva tiene un vehiculo
     @OneToOne(cascade= CascadeType.MERGE )
+    @JsonIgnore
     @JoinColumn(name= "vehiculo_id", referencedColumnName = "id")
     private Vehiculo vehiculo;
 

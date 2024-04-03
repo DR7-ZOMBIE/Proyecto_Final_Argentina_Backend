@@ -3,6 +3,7 @@ package com.Alquiler.Alquiler_Vehiculo.dto;
 import com.Alquiler.Alquiler_Vehiculo.model.MetodoPago;
 import com.Alquiler.Alquiler_Vehiculo.model.user.Usuario;
 import com.Alquiler.Alquiler_Vehiculo.model.Vehiculo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import java.time.LocalDate;

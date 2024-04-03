@@ -28,8 +28,9 @@ public class VehiculoDTO {
     private Boolean isDisponible;
     private String observacion;
     private String descripcion;
-@JsonIgnore
+
     private Categoria categoria;
+
     private Reserva reservas;
 
 }

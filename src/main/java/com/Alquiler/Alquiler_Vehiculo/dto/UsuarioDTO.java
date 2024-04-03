@@ -2,6 +2,7 @@ package com.Alquiler.Alquiler_Vehiculo.dto;
 
 import com.Alquiler.Alquiler_Vehiculo.model.Reserva;
 import com.Alquiler.Alquiler_Vehiculo.model.user.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import java.util.HashSet;
