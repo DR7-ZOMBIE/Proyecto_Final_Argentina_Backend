@@ -32,7 +32,7 @@ public class Vehiculo {
     @Column(nullable = false)
     private String color;
     @Column(nullable = false)
-    private LocalDate year;
+    private String year;
     @Column(nullable = false)
     private String matricula;
     @Column(nullable = false)
@@ -43,7 +43,7 @@ public class Vehiculo {
     // Muchas vehiculos tienen una categoria
     @JsonIgnore
     @JoinColumn( name = "categoria_id" , nullable = false)
-    @ManyToOne ( fetch = FetchType.LAZY , cascade = CascadeType.MERGE)
+    @ManyToOne ( fetch = FetchType.EAGER , cascade = CascadeType.MERGE)
     private Categoria categoria;
 
     // Un vehiculo tiene una reserva

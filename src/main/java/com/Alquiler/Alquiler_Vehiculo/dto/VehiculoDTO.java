@@ -21,7 +21,7 @@ public class VehiculoDTO {
     private String modelo;
     private String serialMotor;
     private String color;
-    private LocalDate year;
+    private String year;
     private String matricula;
     private Boolean isDisponible;
     private String observacion;
