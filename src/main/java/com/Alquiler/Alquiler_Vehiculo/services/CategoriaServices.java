@@ -60,4 +60,14 @@ public class CategoriaServices implements ICategoriaServices<CategoriaDTO>{
     @Override
     public void deleteAll() { idaoCategoria.deleteAll();}
 
+    @Override
+    public CategoriaDTO findByTitulo(String titulo) {
+        Optional<Categoria> categoria = idaoCategoria.findByTitulo(titulo);
+        CategoriaDTO categoriaDTO = null;
+
+        if (categoria.isPresent()) categoriaDTO = mapper.convertValue(categoria, CategoriaDTO.class);
+
+        return categoriaDTO;
+    }
+
 }

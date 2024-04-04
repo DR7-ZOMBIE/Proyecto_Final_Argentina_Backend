@@ -75,8 +75,8 @@ public class ControllerMYSQLReserva {
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/add")
     public ResponseEntity<ReservaDTO> addReserva(@RequestBody ReservaDTO reservaDTO){
-        reservaServices.save(reservaDTO);
-        return ResponseEntity.ok(reservaServices.save(reservaDTO));
+        ReservaDTO r = reservaServices.save(reservaDTO);
+        return ResponseEntity.ok(r);
     }
 
     // Modificar una reserva

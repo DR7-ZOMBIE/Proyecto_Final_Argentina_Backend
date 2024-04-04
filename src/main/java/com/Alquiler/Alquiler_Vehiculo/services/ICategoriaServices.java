@@ -12,4 +12,6 @@ public interface ICategoriaServices <T>{
 
     Set<T> findAll(); // Listar todas las categorias
     void deleteAll(); // Limpiar todas las categorias
+    T findByTitulo(String titulo); // Buscar una categoria por titulo
+
 }

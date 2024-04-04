@@ -15,7 +15,6 @@ public class MetodoPago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column ( unique = true , nullable = false)
-    @NonNull
     private Long id;
     @Column (nullable = false)
     private String nombreTitular;

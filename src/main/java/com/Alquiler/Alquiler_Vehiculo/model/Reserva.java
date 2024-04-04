@@ -19,7 +19,6 @@ public class Reserva {
     @Id
     @GeneratedValue ( strategy = GenerationType.IDENTITY)
     @Column ( unique = true , nullable = false)
-    @NonNull
     private Long ID;
 
     @Column(nullable = false)

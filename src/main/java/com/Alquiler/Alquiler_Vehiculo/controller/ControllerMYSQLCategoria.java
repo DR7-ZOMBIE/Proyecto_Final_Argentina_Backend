@@ -38,11 +38,11 @@ public class ControllerMYSQLCategoria {
     }
 
 
-    // Buscar una categoria
-    @Operation (summary = "Este metodo se usa para buscar una categoría")
-    @RequestMapping("/list/{id}")
+    // Buscar una categoria por id
+    @Operation (summary = "Este metodo se usa para buscar una categoría por id")
+    @RequestMapping("/list/id/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public CategoriaDTO findCategoria(@PathVariable Long id){
+    public CategoriaDTO findCategoriaID(@PathVariable Long id){
         Optional<CategoriaDTO> categoria = Optional.ofNullable(categoriaServices.findById(id));
 
         if(categoria.isPresent()){
@@ -51,6 +51,21 @@ public class ControllerMYSQLCategoria {
             throw new Excepciones("La categoria no existe", HttpStatus.NOT_FOUND);
         }
     }
+
+    // Buscar una categoria por nombre
+    @Operation (summary = "Este metodo se usa para buscar una categoría por titulo")
+    @RequestMapping("/list/titulo/{titulo}")
+    @ResponseStatus(HttpStatus.OK)
+    public CategoriaDTO findCategoriaNombre(@PathVariable String titulo){
+        Optional<CategoriaDTO> categoria = Optional.ofNullable(categoriaServices.findByTitulo(titulo));
+
+        if(categoria.isPresent()){
+            return categoriaServices.findByTitulo(titulo);
+        }else{
+            throw new Excepciones("La categoria no existe", HttpStatus.NOT_FOUND);
+        }
+    }
+
 
     // Eliminar una categoria
     @Operation (summary = "Este metodo se usa para eliminar una categoría por Id")
@@ -71,8 +86,8 @@ public class ControllerMYSQLCategoria {
     @RequestMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<CategoriaDTO> addCategoria(@RequestBody CategoriaDTO categoriaDTO){
-        categoriaServices.save(categoriaDTO);
-        return ResponseEntity.ok(categoriaDTO);
+        CategoriaDTO c = categoriaServices.save(categoriaDTO);
+        return ResponseEntity.ok(c);
     }
 
     // Eliminar todas las categorias

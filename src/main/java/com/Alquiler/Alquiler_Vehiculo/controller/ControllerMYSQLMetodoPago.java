@@ -70,8 +70,8 @@ public class ControllerMYSQLMetodoPago {
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/add")
     public ResponseEntity<MetodoPagoDTO> addReserva(@RequestBody MetodoPagoDTO metodoPagoDTO){
-        metodoPagoServices.save(metodoPagoDTO);
-        return ResponseEntity.ok(metodoPagoDTO);
+        MetodoPagoDTO m = metodoPagoServices.save(metodoPagoDTO);
+        return ResponseEntity.ok(m);
     }
 
     // Eliminar todos los metodos de pago

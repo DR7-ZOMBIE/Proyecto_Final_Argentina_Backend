@@ -18,7 +18,6 @@ public class Vehiculo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
-    @NonNull
     private Long ID;
     @Column(nullable = false)
     private String marca;
