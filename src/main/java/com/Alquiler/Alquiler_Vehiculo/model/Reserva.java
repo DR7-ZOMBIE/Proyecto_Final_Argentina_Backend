@@ -19,6 +19,7 @@ public class Reserva {
     @Id
     @GeneratedValue ( strategy = GenerationType.IDENTITY)
     @Column ( unique = true , nullable = false)
+    @NonNull
     private Long ID;
 
     @Column(nullable = false)
@@ -37,17 +38,17 @@ public class Reserva {
     // Muchas reservas tienen un usuario
     @JsonIgnore
     @JoinColumn( name = "usuario_id" , nullable = false)
-    @ManyToOne ( fetch = FetchType.LAZY , cascade = CascadeType.ALL)
+    @ManyToOne ( fetch = FetchType.EAGER , cascade = CascadeType.ALL)
     private Usuario usuario;
 
     // Una reserva tiene un metodo de pago
-    @OneToOne(cascade= CascadeType.MERGE )
+    @OneToOne(cascade= CascadeType.MERGE , fetch = FetchType.EAGER )
     @JsonIgnore
     @JoinColumn(name= "pago_id", referencedColumnName = "id")
     private MetodoPago metodoDePago;
 
     // Una reserva tiene un vehiculo
-    @OneToOne(cascade= CascadeType.MERGE )
+    @OneToOne(cascade= CascadeType.MERGE , fetch = FetchType.EAGER)
     @JsonIgnore
     @JoinColumn(name= "vehiculo_id", referencedColumnName = "id")
     private Vehiculo vehiculo;

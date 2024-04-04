@@ -2,10 +2,7 @@ package com.Alquiler.Alquiler_Vehiculo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
@@ -18,6 +15,7 @@ public class MetodoPago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column ( unique = true , nullable = false)
+    @NonNull
     private Long id;
     @Column (nullable = false)
     private String nombreTitular;
@@ -35,7 +33,7 @@ public class MetodoPago {
         this.anioVencimiento = anioVencimiento;
     }
 
-    @OneToOne(mappedBy = "metodoDePago" , cascade = CascadeType.MERGE, fetch = FetchType.LAZY )
+    @OneToOne(mappedBy = "metodoDePago" , cascade = CascadeType.MERGE, fetch = FetchType.EAGER )
     @JsonIgnore
     private Reserva reserva;
 

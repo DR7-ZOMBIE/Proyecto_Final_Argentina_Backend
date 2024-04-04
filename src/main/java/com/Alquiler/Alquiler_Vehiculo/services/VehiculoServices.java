@@ -43,7 +43,7 @@ public class VehiculoServices implements IVehiculoServices<VehiculoDTO>{
         Optional<Vehiculo> vehicle = idaoVehiculo.findById(id);
         VehiculoDTO vehiculoDTO = null;
 
-        if (vehicle.isPresent()) vehiculoDTO = modelMapper.map(vehicle, VehiculoDTO.class);
+        if (vehicle.isPresent()) vehiculoDTO = mapper.convertValue(vehicle, VehiculoDTO.class);
 
         return vehiculoDTO;
     }

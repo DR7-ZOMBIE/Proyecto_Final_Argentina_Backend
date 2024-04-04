@@ -42,7 +42,7 @@ public class ControllerMYSQLCategoria {
     @Operation (summary = "Este metodo se usa para buscar una categoría")
     @RequestMapping("/list/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public CategoriaDTO findCategoria(@RequestParam Long id){
+    public CategoriaDTO findCategoria(@PathVariable Long id){
         Optional<CategoriaDTO> categoria = Optional.ofNullable(categoriaServices.findById(id));
 
         if(categoria.isPresent()){
@@ -56,7 +56,7 @@ public class ControllerMYSQLCategoria {
     @Operation (summary = "Este metodo se usa para eliminar una categoría por Id")
     @RequestMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void deleteCategoria(@RequestParam Long id) {
+    public void deleteCategoria(@PathVariable Long id) {
         Optional<CategoriaDTO> categoria = Optional.ofNullable(categoriaServices.findById(id));
 
         if (categoria.isPresent()) {
@@ -87,7 +87,7 @@ public class ControllerMYSQLCategoria {
     @Operation (summary = "Este método se usa para modificar una categoría")
     @RequestMapping("/update/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void updateCategoria(@RequestBody CategoriaDTO categoriaDTO, @RequestParam Long id){
+    public void updateCategoria(@RequestBody CategoriaDTO categoriaDTO, @PathVariable Long id){
         Optional<CategoriaDTO> categoria = Optional.ofNullable(categoriaServices.findById(id));
 
         if (categoria.isPresent()){

@@ -47,7 +47,7 @@ public class ControllerMYSQLUsuario {
     @Operation (summary = "Este método se emplea para busar un usuario")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/list/{id}")
-    public UsuarioDTO findUser(@RequestParam Long id){
+    public UsuarioDTO findUser(@PathVariable Long id){
 
         Optional<UsuarioDTO> usuario = Optional.ofNullable(usuarioServices.findById(id));
 
@@ -62,7 +62,7 @@ public class ControllerMYSQLUsuario {
     @Operation ( summary = "Este método se emplea para eliminar un usuario")
     @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("/delete/{id}")
-    public void deleteUser(@RequestParam Long id){
+    public void deleteUser(@PathVariable Long id){
 
         Optional<UsuarioDTO> usuario = Optional.ofNullable(usuarioServices.findById(id));
 
@@ -88,7 +88,7 @@ public class ControllerMYSQLUsuario {
     @Operation( summary = "Este método se emplea para modificar un usuario")
     @ResponseStatus(HttpStatus.OK)
     @PutMapping("/update/{id}")
-    public void updateUser(@RequestBody UsuarioDTO usuario, @RequestParam Long id){
+    public void updateUser(@RequestBody UsuarioDTO usuario, @PathVariable Long id){
 
         Optional<UsuarioDTO> u = Optional.ofNullable(usuarioServices.findById(id));
         UsuarioDTO o = null;

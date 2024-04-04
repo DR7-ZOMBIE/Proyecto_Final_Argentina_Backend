@@ -3,10 +3,6 @@ package com.Alquiler.Alquiler_Vehiculo.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
-
 
 @ToString
 @Getter
@@ -22,6 +18,7 @@ public class Vehiculo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
+    @NonNull
     private Long ID;
     @Column(nullable = false)
     private String marca;
@@ -48,7 +45,7 @@ public class Vehiculo {
 
     // Un vehiculo tiene una reserva
     @JsonIgnore
-    @OneToOne(mappedBy = "vehiculo", cascade = { CascadeType.MERGE })
+    @OneToOne(mappedBy = "vehiculo", cascade = CascadeType.MERGE , fetch = FetchType.EAGER)
     private Reserva reservas;
 
 }

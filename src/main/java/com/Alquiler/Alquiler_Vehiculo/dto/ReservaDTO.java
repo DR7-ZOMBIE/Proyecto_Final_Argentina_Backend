@@ -33,6 +33,4 @@ public class ReservaDTO {
 
     private Vehiculo vehiculo;
 
-    public void setId(Long id) {
-    }
 }

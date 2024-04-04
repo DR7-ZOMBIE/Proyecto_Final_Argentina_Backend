@@ -46,7 +46,7 @@ public class ControllerMYSQLReserva {
     @Operation( summary = "Este método se emplea para buscar una reserva")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/list/id")
-    public ReservaDTO findReserva(@RequestParam Long id){
+    public ReservaDTO findReserva(@PathVariable Long id){
 
         Optional<ReservaDTO> reserva = Optional.ofNullable(reservaServices.findById(id));
 
@@ -61,7 +61,7 @@ public class ControllerMYSQLReserva {
     @Operation( summary = "Este método se emplea para eliminar una reserva")
     @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("/delete/{id}")
-    public void deleteReserva(@RequestParam Long id){
+    public void deleteReserva(@PathVariable Long id){
 
         Optional<ReservaDTO> reservaDTO = Optional.ofNullable(reservaServices.findById(id));
 
@@ -83,7 +83,7 @@ public class ControllerMYSQLReserva {
     @Operation ( summary = "Este método se emplea para modificar una reserva" )
     @ResponseStatus(HttpStatus.OK)
     @PutMapping("/update/{id}")
-    public void updateReserva(@RequestBody ReservaDTO reservaDTO , @RequestParam Long id){
+    public void updateReserva(@RequestBody ReservaDTO reservaDTO , @PathVariable Long id){
 
         Optional<ReservaDTO> r = Optional.ofNullable(reservaServices.findById(id));
         ReservaDTO r2 = new ReservaDTO(); // Inicializar r2 aquí

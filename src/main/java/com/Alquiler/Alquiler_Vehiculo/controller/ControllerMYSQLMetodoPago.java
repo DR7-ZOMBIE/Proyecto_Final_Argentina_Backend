@@ -40,9 +40,9 @@ public class ControllerMYSQLMetodoPago {
 
     // Buscar un metodo de pago
     @Operation( summary = "Este método se emplea para buscar un método de pago por Id")
-    @GetMapping("/list/id")
+    @GetMapping("/list/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public MetodoPagoDTO findMetodoPago(@RequestParam Long id){
+    public MetodoPagoDTO findMetodoPago(@PathVariable Long id){
         Optional<MetodoPagoDTO> pago = Optional.ofNullable(metodoPagoServices.findById(id));
         if(pago.isPresent()){
             return metodoPagoServices.findById(1L);
@@ -55,7 +55,7 @@ public class ControllerMYSQLMetodoPago {
     @Operation( summary = "Este método se emplea para eliminar un método de pago")
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void deleteMetodoPago(@RequestParam Long id) {
+    public void deleteMetodoPago(@PathVariable Long id) {
         Optional<MetodoPagoDTO> pago = Optional.ofNullable(metodoPagoServices.findById(id));
 
         if (pago.isPresent()) {
@@ -86,7 +86,7 @@ public class ControllerMYSQLMetodoPago {
     @Operation( summary = "Este método se emplea para modificar un método de pago")
     @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<MetodoPagoDTO> updateMetodoPago(@RequestBody MetodoPagoDTO metodoPagoDTO, @RequestParam Long id){
+    public ResponseEntity<MetodoPagoDTO> updateMetodoPago(@RequestBody MetodoPagoDTO metodoPagoDTO, @PathVariable Long id){
         Optional<MetodoPagoDTO> pago = Optional.ofNullable(metodoPagoServices.findById(id));
         if (pago.isPresent()){
             metodoPagoServices.save(metodoPagoDTO);

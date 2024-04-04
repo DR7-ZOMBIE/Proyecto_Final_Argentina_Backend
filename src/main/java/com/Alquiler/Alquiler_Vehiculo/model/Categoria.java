@@ -17,6 +17,7 @@ public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column ( unique = true , nullable = false)
+    @NonNull
     private Long id;
 
     @Column(nullable = false)
@@ -28,7 +29,7 @@ public class Categoria {
     @Column(nullable = false)
     private String imagen;
 
-    @OneToMany(mappedBy = "categoria", cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<Vehiculo> vehiculos = new HashSet<>();
 }
