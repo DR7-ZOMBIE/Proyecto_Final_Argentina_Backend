@@ -40,7 +40,7 @@ public class CategoriaServices implements ICategoriaServices<CategoriaDTO>{
         Optional<Categoria> categoria = idaoCategoria.findById(id);
         CategoriaDTO categoriaDTO = null;
 
-        if (categoria.isPresent()) categoriaDTO = mapperModel.map(categoria, CategoriaDTO.class);
+        if (categoria.isPresent()) categoriaDTO = mapper.convertValue(categoria, CategoriaDTO.class);
 
         return categoriaDTO;
     }

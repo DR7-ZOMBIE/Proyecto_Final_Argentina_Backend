@@ -41,7 +41,7 @@ public class MetodoPagoServices implements IMetodoPagoServices<MetodoPagoDTO> {
         Optional<MetodoPago> metodoPago = idaoMetodoPago.findById(id);
         MetodoPagoDTO metodoPagoDTO = null;
 
-        if (metodoPago.isPresent()) metodoPagoDTO = modelMapper.map(metodoPago, MetodoPagoDTO.class);
+        if (metodoPago.isPresent()) metodoPagoDTO = mapper.convertValue(metodoPago, MetodoPagoDTO.class);
 
         return metodoPagoDTO;
     }

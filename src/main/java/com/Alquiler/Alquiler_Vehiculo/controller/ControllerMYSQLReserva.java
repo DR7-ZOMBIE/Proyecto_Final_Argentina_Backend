@@ -45,7 +45,7 @@ public class ControllerMYSQLReserva {
     // Buscar un reserva
     @Operation( summary = "Este método se emplea para buscar una reserva")
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/list/id")
+    @GetMapping("/list/{id}")
     public ReservaDTO findReserva(@PathVariable Long id){
 
         Optional<ReservaDTO> reserva = Optional.ofNullable(reservaServices.findById(id));
@@ -53,7 +53,7 @@ public class ControllerMYSQLReserva {
         if(reserva.isPresent()){
             return reservaServices.findById(id);
         }else{
-            throw new Excepciones("La reserrva no existe", HttpStatus.NOT_FOUND);
+            throw new Excepciones("La reserva no existe", HttpStatus.NOT_FOUND);
         }
     }
 
