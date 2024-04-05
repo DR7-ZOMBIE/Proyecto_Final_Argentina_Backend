@@ -93,6 +93,15 @@ public class ControllerMYSQLVehiculo {
         if (o.isPresent()){
             v = vehiculoServices.findbyId(id);
             v.setColor(vehiculoDTO.getColor());
+            v.setMarca(vehiculoDTO.getMarca());
+            v.setMatricula(vehiculoDTO.getMatricula());
+            v.setIsDisponible(vehiculoDTO.getIsDisponible());
+            v.setObservacion(vehiculoDTO.getObservacion());
+            v.setCategoria(vehiculoDTO.getCategoria());
+            v.setSerialMotor(v.getSerialMotor());
+            v.setYear(vehiculoDTO.getYear());
+            v.setModelo(v.getModelo());
+            v.setReservas(v.getReservas());
         }else{
             throw new Excepciones("El vehiculo no se puede actualizar", HttpStatus.NOT_FOUND);
         }
