@@ -2,6 +2,7 @@ package com.Alquiler.Alquiler_Vehiculo.model.user;
 
 import com.Alquiler.Alquiler_Vehiculo.model.Reserva;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -47,8 +48,8 @@ public class Usuario implements UserDetails {
     @Column(nullable = false)
     private Role role;
 
-    @OneToMany( mappedBy = "usuario" , cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-    @JsonIgnore
+    @OneToMany( mappedBy = "usuario" , cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JsonManagedReference // Indica que este lado de la relación debe ser serializado
     private Set<Reserva> reservas = new HashSet<Reserva>();
 
     // Metodos Security Usuario

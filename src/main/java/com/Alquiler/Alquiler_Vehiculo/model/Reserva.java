@@ -1,7 +1,9 @@
 package com.Alquiler.Alquiler_Vehiculo.model;
 
 import com.Alquiler.Alquiler_Vehiculo.model.user.Usuario;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -35,22 +37,19 @@ public class Reserva {
 
 
     // Muchas reservas tienen un usuario
-    @JsonIgnore
     @JoinColumn( name = "usuario_id" , nullable = true)
     @ManyToOne ( fetch = FetchType.EAGER , cascade = CascadeType.MERGE)
+    @JsonBackReference // Evita la serialización de este lado para prevenir bucles
     private Usuario usuario;
 
     // Una reserva tiene un metodo de pago
     @OneToOne(cascade= CascadeType.MERGE , fetch = FetchType.EAGER )
-    @JsonIgnore
     @JoinColumn(name= "pago_id", nullable = true)
     private MetodoPago metodoDePago;
 
     // Una reserva tiene un vehiculo
     @OneToOne(cascade= CascadeType.MERGE , fetch = FetchType.EAGER)
-    @JsonIgnore
     @JoinColumn(name= "vehiculo_id", nullable = true)
     private Vehiculo vehiculo;
-
 
 }

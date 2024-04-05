@@ -1,6 +1,8 @@
 package com.Alquiler.Alquiler_Vehiculo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -33,7 +35,6 @@ public class MetodoPago {
     }
 
     @OneToOne(mappedBy = "metodoDePago" , cascade = CascadeType.MERGE, fetch = FetchType.EAGER )
-    @JsonIgnore
     private Reserva reserva;
 
 }
