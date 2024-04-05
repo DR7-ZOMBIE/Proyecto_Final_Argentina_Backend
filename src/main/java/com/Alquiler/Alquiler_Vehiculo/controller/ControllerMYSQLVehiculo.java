@@ -88,20 +88,21 @@ public class ControllerMYSQLVehiculo {
     public void updateVehiculo(@PathVariable Long id, @RequestBody VehiculoDTO vehiculoDTO){
 
         Optional<VehiculoDTO> o = Optional.ofNullable(vehiculoServices.findbyId(id));
-        VehiculoDTO v = null;
+        VehiculoDTO v = vehiculoServices.findbyId(id);
 
         if (o.isPresent()){
-            v = vehiculoServices.findbyId(id);
-            v.setColor(vehiculoDTO.getColor());
             v.setMarca(vehiculoDTO.getMarca());
             v.setMatricula(vehiculoDTO.getMatricula());
             v.setIsDisponible(vehiculoDTO.getIsDisponible());
             v.setObservacion(vehiculoDTO.getObservacion());
             v.setCategoria(vehiculoDTO.getCategoria());
-            v.setSerialMotor(v.getSerialMotor());
+            v.setSerialMotor(vehiculoDTO.getSerialMotor());
             v.setYear(vehiculoDTO.getYear());
-            v.setModelo(v.getModelo());
-            v.setReservas(v.getReservas());
+            v.setModelo(vehiculoDTO.getModelo());
+            v.setReservas(vehiculoDTO.getReservas());
+            v.setColor(vehiculoDTO.getColor());
+
+            vehiculoServices.save(v);
         }else{
             throw new Excepciones("El vehiculo no se puede actualizar", HttpStatus.NOT_FOUND);
         }

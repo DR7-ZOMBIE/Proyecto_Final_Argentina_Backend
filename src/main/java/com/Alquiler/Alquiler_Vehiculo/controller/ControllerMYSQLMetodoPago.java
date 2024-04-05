@@ -86,11 +86,19 @@ public class ControllerMYSQLMetodoPago {
     @Operation( summary = "Este método se emplea para modificar un método de pago")
     @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<MetodoPagoDTO> updateMetodoPago(@RequestBody MetodoPagoDTO metodoPagoDTO, @PathVariable Long id){
+    public void updateMetodoPago(@RequestBody MetodoPagoDTO metodoPagoDTO, @PathVariable Long id){
+
         Optional<MetodoPagoDTO> pago = Optional.ofNullable(metodoPagoServices.findById(id));
+        MetodoPagoDTO m = metodoPagoServices.findById(id);
+
         if (pago.isPresent()){
-            metodoPagoServices.save(metodoPagoDTO);
-            return ResponseEntity.ok(metodoPagoDTO);
+            m.setCve(metodoPagoDTO.getCve());
+            m.setReserva(metodoPagoDTO.getReserva());
+            m.setAnioVencimiento(metodoPagoDTO.getAnioVencimiento());
+            m.setNombreTitular(metodoPagoDTO.getNombreTitular());
+            m.setNumeroDeTarjeta(metodoPagoDTO.getNumeroDeTarjeta());
+            metodoPagoServices.save(m);
+
         }else{
             throw new Excepciones("El metodo de pago no existe", HttpStatus.NOT_FOUND);
         }

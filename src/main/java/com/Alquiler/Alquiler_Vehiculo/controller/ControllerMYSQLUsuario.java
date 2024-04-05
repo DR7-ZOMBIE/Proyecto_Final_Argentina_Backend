@@ -91,11 +91,18 @@ public class ControllerMYSQLUsuario {
     public void updateUser(@RequestBody UsuarioDTO usuario, @PathVariable Long id){
 
         Optional<UsuarioDTO> u = Optional.ofNullable(usuarioServices.findById(id));
-        UsuarioDTO o = null;
+        UsuarioDTO o = usuarioServices.findById(id);
 
         if (u.isPresent()){
             o.setEmail(usuario.getEmail());
             o.setNombre(usuario.getNombre());
+            o.setApellido(usuario.getApellido());
+            o.setRole(usuario.getRole());
+            o.setPassword(usuario.getPassword());
+            o.setEmail(usuario.getEmail());
+            o.setReservas(usuario.getReservas());
+            usuarioServices.save(o);
+
         }else{
             throw new Excepciones("No hay usuario para actualizar", HttpStatus.NOT_FOUND);
         }

@@ -103,10 +103,16 @@ public class ControllerMYSQLCategoria {
     @RequestMapping("/update/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void updateCategoria(@RequestBody CategoriaDTO categoriaDTO, @PathVariable Long id){
+
         Optional<CategoriaDTO> categoria = Optional.ofNullable(categoriaServices.findById(id));
+        CategoriaDTO c = categoriaServices.findById(id);
 
         if (categoria.isPresent()){
-            categoriaServices.save(categoriaDTO);
+            c.setDescripcion(categoriaDTO.getDescripcion());
+            c.setImagen(categoriaDTO.getImagen());
+            c.setTitulo(categoriaDTO.getTitulo());
+            c.setVehiculos(categoriaDTO.getVehiculos());
+            categoriaServices.save(c);
         }else{
             throw new Excepciones("La categoria no existe", HttpStatus.NOT_FOUND);
         }

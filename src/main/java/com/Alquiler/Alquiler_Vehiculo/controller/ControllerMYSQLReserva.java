@@ -86,11 +86,17 @@ public class ControllerMYSQLReserva {
     public void updateReserva(@RequestBody ReservaDTO reservaDTO , @PathVariable Long id){
 
         Optional<ReservaDTO> r = Optional.ofNullable(reservaServices.findById(id));
-        ReservaDTO r2 = new ReservaDTO(); // Inicializar r2 aquí
+        ReservaDTO r2 = reservaServices.findById(id);
 
         if (r.isPresent()){
-            r2 = r.get(); // Actualizar r2 con el valor de r si está presente
-            r2.setUbicacion(reservaDTO.getUbicacion());
+           r2.setUbicacion(reservaDTO.getUbicacion());
+           r2.setIsReserva(reservaDTO.getIsReserva());
+           r2.setUsuario(reservaDTO.getUsuario());
+           r2.setVehiculo(reservaDTO.getVehiculo());
+           r2.setFecha_Entrega(reservaDTO.getFecha_Entrega());
+           r2.setFecha_Inicio(reservaDTO.getFecha_Inicio());
+           r2.setMetodoDePago(reservaDTO.getMetodoDePago());
+           reservaServices.save(r2);
         } else throw new Excepciones("No hay reserva para actualizar", HttpStatus.NOT_FOUND);
 
     }
