@@ -60,4 +60,18 @@ public class VehiculoServices implements IVehiculoServices<VehiculoDTO>{
 
     @Override
     public void deleteAll() { idaoVehiculo.deleteAll(); }
+
+    @Override
+    public Set<VehiculoDTO> findIsFavorito() {
+        List<Vehiculo> vehiculos = idaoVehiculo.findByIsFavorito(true);
+        Set<VehiculoDTO> vehiculoDTOS = new HashSet<>();
+
+        for (Vehiculo vehiculo : vehiculos) {
+            vehiculoDTOS.add(modelMapper.map(vehiculo, VehiculoDTO.class));
+        }
+
+        return vehiculoDTOS;
+    }
+
+
 }

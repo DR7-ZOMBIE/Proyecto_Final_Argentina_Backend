@@ -34,17 +34,19 @@ public class Vehiculo {
     @Column(nullable = false)
     private Boolean isDisponible;
     @Column(nullable = false)
+    private Boolean isFavorito;
+    @Column(nullable = false)
     private String observacion;
 
     // Muchas vehiculos tienen una categoria
-    @JsonIgnore
-    @JoinColumn( name = "categoria_id" , nullable = false)
+    @JoinColumn( name = "categoria_id" , nullable = true)
     @ManyToOne ( fetch = FetchType.EAGER , cascade = CascadeType.MERGE)
+    @JsonIgnore
     private Categoria categoria;
 
     // Un vehiculo tiene una reserva
-    @JsonIgnore
     @OneToOne(mappedBy = "vehiculo", cascade = CascadeType.MERGE , fetch = FetchType.EAGER)
+    @JsonIgnore
     private Reserva reservas;
 
 }

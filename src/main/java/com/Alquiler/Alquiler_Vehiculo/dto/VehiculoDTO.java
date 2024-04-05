@@ -25,6 +25,7 @@ public class VehiculoDTO {
     private String matricula;
     private Boolean isDisponible;
     private String observacion;
+    private Boolean isFavorito;
 
     private Categoria categoria;
 

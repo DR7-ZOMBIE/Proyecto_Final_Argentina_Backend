@@ -27,7 +27,7 @@ public class ControllerMYSQLVehiculo {
     // Listar todos los vehiculos
     @Operation( summary = "Este método se emplea para listar todos los vehículos",
             description = "Esta es una prueba de la descrición")
-    @GetMapping("/list")
+    @GetMapping("/list/all")
     @ResponseStatus(HttpStatus.OK)
     public Set<VehiculoDTO> listVehiculos(){
 
@@ -41,9 +41,9 @@ public class ControllerMYSQLVehiculo {
 
     }
 
-    // Buscar vehiculo especifico
+    // Buscar vehiculo especifico por id
     @Operation( summary = "Este método se emplea para buscar un vehículo específico")
-    @GetMapping("/list/{id}")
+    @GetMapping("/list/id/{id}")
     @ResponseStatus(HttpStatus.OK)
     public VehiculoDTO findById(@PathVariable Long id){
         Optional<VehiculoDTO> vehiculo = Optional.ofNullable(vehiculoServices.findbyId(id));
@@ -54,6 +54,22 @@ public class ControllerMYSQLVehiculo {
             throw new Excepciones("El vehiculo no esta disponible", HttpStatus.NOT_FOUND);
         }
 
+    }
+
+    // Listar todos los vehiculos que son favoritos
+    @Operation( summary = "Este método se emplea para listar todos los vehículos favoritos",
+            description = "Esta es una prueba de la descripción")
+    @GetMapping("/list/favoritos")
+    @ResponseStatus(HttpStatus.OK)
+    public Set<VehiculoDTO> listVehiculosFavoritos(){
+
+        Optional<Set<VehiculoDTO>> listVehiculos = Optional.ofNullable(vehiculoServices.findAll());
+
+        if (listVehiculos.isPresent()){
+            return vehiculoServices.findIsFavorito();
+        }else{
+            throw new Excepciones("No existen vehiculos favoritos" , HttpStatus.NOT_FOUND);
+        }
     }
 
     // Agregar vehiculo al sistema

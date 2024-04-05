@@ -36,20 +36,21 @@ public class Reserva {
 
     // Muchas reservas tienen un usuario
     @JsonIgnore
-    @JoinColumn( name = "usuario_id" , nullable = false)
-    @ManyToOne ( fetch = FetchType.EAGER , cascade = CascadeType.ALL)
+    @JoinColumn( name = "usuario_id" , nullable = true)
+    @ManyToOne ( fetch = FetchType.EAGER , cascade = CascadeType.MERGE)
     private Usuario usuario;
 
     // Una reserva tiene un metodo de pago
     @OneToOne(cascade= CascadeType.MERGE , fetch = FetchType.EAGER )
     @JsonIgnore
-    @JoinColumn(name= "pago_id", referencedColumnName = "id")
+    @JoinColumn(name= "pago_id", nullable = true)
     private MetodoPago metodoDePago;
 
     // Una reserva tiene un vehiculo
     @OneToOne(cascade= CascadeType.MERGE , fetch = FetchType.EAGER)
     @JsonIgnore
-    @JoinColumn(name= "vehiculo_id", referencedColumnName = "id")
+    @JoinColumn(name= "vehiculo_id", nullable = true)
     private Vehiculo vehiculo;
+
 
 }

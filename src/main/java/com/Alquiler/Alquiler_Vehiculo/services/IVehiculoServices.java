@@ -10,5 +10,6 @@ public interface IVehiculoServices <T> {
     T findbyId(Long id); // Buscar un vehiculo por id
     Set<T> findAll();     // Buscar todos los vehiculos
     void deleteAll();  // Elminar todos los vehiculos
+    Set<T> findIsFavorito(); // Buscar si un vehiculo es favorito
 
 }
