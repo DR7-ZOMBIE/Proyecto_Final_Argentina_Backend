@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -32,28 +32,19 @@
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-api</artifactId>
-			<version>0.12.5</version>
+			<version>0.11.2</version>
 		</dependency>
-
-		<!-- jjwt-api contains the JWT API -->
-		<dependency>
-			<groupId>io.jsonwebtoken</groupId>
-			<artifactId>jjwt-api</artifactId>
-			<version>0.11.5</version>
-		</dependency>
-		<!-- jjwt-impl contains the implementation of the JWT API -->
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-impl</artifactId>
-			<version>0.11.5</version>
+			<version>0.11.2</version>
 		</dependency>
-		<!-- jjwt-jackson brings in Jackson as the JSON parser -->
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
-			<artifactId>jjwt-jackson</artifactId>
-			<version>0.11.5</version>
-			<scope>runtime</scope>
+			<artifactId>jjwt-jackson</artifactId> <!-- o jjwt-gson si prefieres Gson -->
+			<version>0.11.2</version>
 		</dependency>
+
 
 		<dependency>
 			<groupId>org.springdoc</groupId>
@@ -119,11 +110,6 @@
 			<artifactId>spring-boot-test</artifactId>
 			<version>3.1.2</version>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.modelmapper</groupId>
-			<artifactId>modelmapper</artifactId>
-			<version>2.3.4</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

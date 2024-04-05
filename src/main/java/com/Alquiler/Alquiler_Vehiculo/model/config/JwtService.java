@@ -48,8 +48,8 @@ public class JwtService {
 
     public String extractUsername(String jwt) {
 
-        return Jwts.parserBuilder().setSigningKey(generateKey()).build()
-                .parseClaimsJwt(jwt).getBody().getSubject();
+        return Jwts.parserBuilder().setSigningKey(generateKey()).build().toString();
+
     }
 
 
