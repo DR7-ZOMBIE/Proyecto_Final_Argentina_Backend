@@ -15,7 +15,7 @@ import java.util.Set;
 @Data
 public class CategoriaDTO {
 
-    private Long id;
+    private Long ID;
 
     private String titulo;
 

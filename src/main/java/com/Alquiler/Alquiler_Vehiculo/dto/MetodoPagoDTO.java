@@ -11,7 +11,7 @@ import lombok.*;
 @Data
 public class MetodoPagoDTO {
 
-    private Long id;
+    private Long ID;
 
     private String nombreTitular;
 
