@@ -165,8 +165,6 @@
 						<exclude>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
-							<version>1.18.32</version>
-							<scope>provided</scope>
 						</exclude>
 					</excludes>
 				</configuration>
@@ -189,5 +187,18 @@
 			</plugin>
         </plugins>
 	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>central</id>
+			<name>MyCompany Repository</name>
+			<url>http://localhost:8082/repository/maven-releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>MyCompany Snapshot Repository</name>
+			<url>http://localhost:8082/repository/maven-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 </project>
